@@ -5,7 +5,7 @@ class Search extends Component {
     super();
   }
   render() {
-    return;
+    return <h1>Find your place</h1>;
   }
 }
 export default Search;

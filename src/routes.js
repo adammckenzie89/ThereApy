@@ -8,9 +8,9 @@ import Search from "./components/search/Search";
 
 export default (
   <Switch>
-    {/* <Route path="/" component={}/>
-    <Route path="/" component={}/>
-    <Route path="/" component={}/> */}
-    <Route path="/" component={Login} />
+    <Route path="/search" component={Search} />
+    <Route path="/places" component={Places} />
+    <Route path="/favorites" component={Favorites} />
+    <Route exact path="/" component={Login} />
   </Switch>
 );

@@ -1,0 +1,17 @@
+nav {
+  display: flex;
+  background: rgb(9, 94, 185);
+  align-items: center;
+  justify-content: flex-end;
+  //   position: fixed;
+  top: 0;
+  width: 100%;
+  //   z-index: 2;
+  height: 70px;
+}
+
+h3 {
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+}

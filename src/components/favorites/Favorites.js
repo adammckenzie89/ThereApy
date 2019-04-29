@@ -5,7 +5,11 @@ class Favorites extends Component {
     super();
   }
   render() {
-    return;
+    return (
+      <div>
+        <h1>Favorite places</h1>
+      </div>
+    );
   }
 }
 export default Favorites;

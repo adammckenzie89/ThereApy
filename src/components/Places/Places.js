@@ -5,7 +5,7 @@ class Places extends Component {
     super();
   }
   render() {
-    return;
+    return <h1>places</h1>;
   }
 }
 export default Places;
