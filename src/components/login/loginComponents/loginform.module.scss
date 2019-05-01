@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  // border: 1px solid black;
+  height: 300px;
+  width: 300px;
+  flex-direction: column;
+  input {
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid rgb(216, 214, 214);
+  }
+}
+h1 {
+  color: rgb(242, 242, 243);
+  font-family: Helvetica;
+  font-weight: 100;
+}
+
+button {
+  background: rgb(75, 137, 218);
+  height: 30px;
+  color: white;
+  border: none;
+}

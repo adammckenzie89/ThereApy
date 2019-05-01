@@ -1,11 +1,38 @@
 import React, { Component } from "react";
+import { getSession } from "../../ducks/auth";
+import { connect } from "react-redux";
+import Header from "../header/Header";
 
 class Places extends Component {
   constructor() {
     super();
   }
+  componentDidMount() {
+    if (this.props.username) {
+    } else {
+      this.props.getSession();
+    }
+  }
   render() {
-    return <h1>places</h1>;
+    return (
+      <div>
+        <Header />
+        <h1>places</h1>
+        <div>
+          <p>Welcome, {this.props.username}</p>
+        </div>
+      </div>
+    );
   }
 }
-export default Places;
+
+const mapStateToProps = reduxState => {
+  return {
+    username: reduxState.auth.username
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { getSession }
+)(Places);

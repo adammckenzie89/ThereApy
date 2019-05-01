@@ -1,16 +1,18 @@
 import React from "react";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import store from "./store";
 import routes from "./routes";
-import Header from "./components/header/Header";
 
 function App() {
+  console.log("hit");
   return (
-    <HashRouter>
-      <div className="App" />
-      <Header />
-      {routes}
-    </HashRouter>
+    <Provider store={store}>
+      <HashRouter>
+        <div className="App" />
+        {routes}
+      </HashRouter>
+    </Provider>
   );
 }
 
