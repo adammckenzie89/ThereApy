@@ -5,6 +5,8 @@ import axios from "axios";
 import Header from "../header/Header";
 import styles from "./search.module.scss";
 
+const { KEY } = process.env;
+
 class Search extends Component {
   constructor() {
     super();
@@ -12,14 +14,10 @@ class Search extends Component {
     this.state = {
       data: [],
       lat: "",
-      lng: ""
+      lng: "",
+      switch: false
     };
   }
-  // let stars = [];
-  //   for (let i = 0; i < val.result.result.rating; i++) {
-  //     stars.push(<i className="fas fa-star" />);
-  //   }
-
   componentDidMount() {
     this.props.getSession();
   }
@@ -36,7 +34,6 @@ class Search extends Component {
           {
             lat: response.data.results[0].geometry.location.lat,
             lng: response.data.results[0].geometry.location.lng
-            // data: response.data
           },
           () => {
             let location = { lat: this.state.lat, lng: this.state.lng };
@@ -51,20 +48,50 @@ class Search extends Component {
       });
   };
   render() {
-    // const { data } = this.state;
-    let displayData = this.state.data.map(val => {
+    const { data } = this.state;
+    console.log(data);
+    let displayData = this.state.data.map((val, index) => {
       return (
         <div className={styles.details}>
           <div className={styles.image}>
-            <img src={val.photos} />
+            {val.photos ? (
+              <img
+                src={`https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyBdyzNFMobsjNsfCLy2XIno2dLW0GP3BDs&maxwidth=400&photoreference=${
+                  val.photos
+                }`}
+              />
+            ) : (
+              <div className={styles.default_image} />
+            )}
           </div>
           <div className={styles.text}>
-            <h3>{val.result.result.formatted_address}</h3>
-            <h3>{val.result.result.formatted_phone_number}</h3>
-            <h3>{val.result.result.name}</h3>
-            {val.result.result.rating > 2 ? (
-              <h3> {val.result.result.rating} </h3>
+            <h2>{val.result.result.name}</h2>
+            {this.state.switch === index ? (
+              <div>
+                <h3>{val.result.result.formatted_address}</h3>
+                <h3>{val.result.result.formatted_phone_number}</h3>
+                {val.result.result.website ? (
+                  <a href={val.result.result.website}>
+                    {val.result.result.website.substr(7)}
+                  </a>
+                ) : null}
+                {val.result.result.rating > 2 ? (
+                  <h3> {val.result.result.rating} </h3>
+                ) : null}
+              </div>
             ) : null}
+            <section>
+              <img src="https://img.icons8.com/material-outlined/24/000000/filled-like.png" />
+              {this.state.switch === index ? (
+                <button onClick={e => this.setState({ switch: null })}>
+                  close
+                </button>
+              ) : (
+                <button onClick={e => this.setState({ switch: index })}>
+                  Details
+                </button>
+              )}
+            </section>
           </div>
         </div>
       );
