@@ -22,3 +22,9 @@ button {
   color: white;
   border: none;
 }
+
+::placeholder {
+  color: white;
+  font-size: 14px;
+  padding: 2px;
+}

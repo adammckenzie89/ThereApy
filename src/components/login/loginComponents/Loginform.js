@@ -42,6 +42,7 @@ class Loginform extends Component {
             onChange={this.handleChange}
             value={this.state.username}
             name="username"
+            autoComplete="off"
           />
           <br />
           <input

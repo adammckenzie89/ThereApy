@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const initialState = {
-  username: "",
+  username: null, //null (change back)
   error: ""
 };
 
@@ -58,11 +58,18 @@ export default function reducer(state = initialState, action) {
         error: "Username already exists"
       };
     case `${GET_SESSION}_FULFILLED`:
-      console.log(action.payload);
-      return {
-        ...state,
-        username: action.payload.data.username
-      };
+      if (action.payload.data.username === "") {
+        return {
+          ...state,
+          username: ""
+        };
+      } else {
+        return {
+          ...state,
+          username: action.payload.data.username
+        };
+      }
+
     case `${LOG_OUT}_FULFILLED`:
       return {
         ...state,

@@ -2,12 +2,20 @@ require("dotenv").config();
 const express = require("express");
 const massive = require("massive");
 const session = require("express-session");
-const authController = require("./middlewares/authController");
 
 const app = express();
+app.use(express.json());
 
 const { CONNECTION_STRING, SERVER_PORT, SECRET } = process.env;
-app.use(express.json());
+
+const {
+  getUser,
+  signup,
+  login,
+  logout
+} = require("./controllers/authController");
+
+const { userLocation } = require("./controllers/mapsController");
 
 app.use(
   session({
@@ -27,12 +35,15 @@ massive(CONNECTION_STRING)
   })
   .catch(error => console.log(error));
 
-/////////////// LOGIN ////////////////////////////
+/////////////// LOGIN ENDPOIONTS////////////////////////////
 
-app.get("/auth/cookie", authController.getUser);
-app.post("/auth/signup", authController.signup);
-app.post("/auth/login", authController.login);
-app.get("/auth/logout", authController.logout);
+app.get("/auth/cookie", getUser);
+app.post("/auth/signup", signup);
+app.post("/auth/login", login);
+app.get("/auth/logout", logout);
+
+/////////////// MAPS ENDPOINTS /////////////////////////////
+app.post("/api/location", userLocation);
 
 app.listen(SERVER_PORT, () => {
   console.log(`listening on port ${SERVER_PORT}`);

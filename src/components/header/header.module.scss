@@ -1,6 +1,6 @@
 nav {
   display: flex;
-  background: rgb(9, 94, 185);
+  background: rgb(43, 161, 182);
   align-items: center;
   justify-content: flex-end;
   //   position: fixed;
@@ -14,4 +14,14 @@ h3 {
   color: white;
   text-decoration: none;
   padding: 5px;
+}
+
+.welcomeUser {
+  display: flex;
+  border: 1px solid white;
+  padding-right: 200px;
+}
+
+a {
+  text-decoration: none;
 }

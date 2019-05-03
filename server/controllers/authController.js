@@ -43,6 +43,7 @@ const getUser = function(req, res, next) {
 };
 const logout = (req, res) => {
   req.session.destroy();
+  res.sendStatus(200);
   console.log(req.session);
 };
 

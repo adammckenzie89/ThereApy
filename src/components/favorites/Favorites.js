@@ -2,16 +2,14 @@ import React, { Component } from "react";
 import { getSession } from "../../ducks/auth";
 import { connect } from "react-redux";
 import Header from "../header/Header";
+import styles from "./favorites.module.scss";
 
 class Favorites extends Component {
   constructor() {
     super();
   }
   componentDidMount() {
-    if (this.props.username) {
-    } else {
-      this.props.getSession();
-    }
+    this.props.getSession();
   }
   render() {
     console.log(this.props.username);
@@ -19,9 +17,8 @@ class Favorites extends Component {
     return (
       <div>
         <Header />
-        <h1>Favorite places</h1>
         <div>
-          <p>Welcome, {this.props.username}</p>
+          <p className={styles.welcomeUser}>Welcome, {this.props.username}</p>
         </div>
       </div>
     );

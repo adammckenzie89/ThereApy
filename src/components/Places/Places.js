@@ -2,24 +2,21 @@ import React, { Component } from "react";
 import { getSession } from "../../ducks/auth";
 import { connect } from "react-redux";
 import Header from "../header/Header";
+import styles from "./places.module.scss";
 
 class Places extends Component {
   constructor() {
     super();
   }
   componentDidMount() {
-    if (this.props.username) {
-    } else {
-      this.props.getSession();
-    }
+    this.props.getSession();
   }
   render() {
     return (
       <div>
         <Header />
-        <h1>places</h1>
         <div>
-          <p>Welcome, {this.props.username}</p>
+          <p className={styles.welcomeUser}>Welcome, {this.props.username}</p>
         </div>
       </div>
     );
