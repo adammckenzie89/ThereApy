@@ -15,7 +15,12 @@ class Search extends Component {
       data: [],
       lat: "",
       lng: "",
-      switch: false
+      switch: false,
+      name: "",
+      formatted_address: "",
+      formatted_phone_number: "",
+      website: "",
+      rating: ""
     };
   }
   componentDidMount() {
@@ -29,7 +34,7 @@ class Search extends Component {
         }&key=AIzaSyBdyzNFMobsjNsfCLy2XIno2dLW0GP3BDs`
       )
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.setState(
           {
             lat: response.data.results[0].geometry.location.lat,
@@ -38,7 +43,7 @@ class Search extends Component {
           () => {
             let location = { lat: this.state.lat, lng: this.state.lng };
             axios.post("/api/location", location).then(response => {
-              console.log(response);
+              // console.log(response);
               this.setState({
                 data: response.data
               });
@@ -47,12 +52,35 @@ class Search extends Component {
         );
       });
   };
+  // addFavorite = index => {
+  //   // const {
+  //   //   name,
+  //   //   formatted_address,
+  //   //   formatted_phone_number,
+  //   //   website,
+  //   //   rating
+  //   // } = this.state;
+  //   axios
+  //     .post("/api/addFavorite", {
+  //       name: [index].result.result.name,
+  //       formatted_address: [index].result.result.formatted_address,
+  //       formatted_phone_number: [index].result.result.formatted_phone_number,
+  //       website: [index].result.result.website,
+  //       rating: [index].result.result.rating,
+  //       id: this.props.id
+  //     })
+  //     .then(response => {
+  //       this.setState({
+  //         response: response.data
+  //       });
+  //     });
+  // };
   render() {
     const { data } = this.state;
-    console.log(data);
+    // console.log(data);
     let displayData = this.state.data.map((val, index) => {
       return (
-        <div className={styles.details}>
+        <div className={styles.details} key={index}>
           <div className={styles.image}>
             {val.photos ? (
               <img
@@ -81,7 +109,27 @@ class Search extends Component {
               </div>
             ) : null}
             <section>
-              <img src="https://img.icons8.com/material-outlined/24/000000/filled-like.png" />
+              <img
+                src="https://img.icons8.com/material-outlined/24/000000/filled-like.png"
+                onClick={() => {
+                  axios
+                    .post("/api/addFavorite", {
+                      name: val.result.result.name,
+                      formatted_address: val.result.result.formatted_address,
+                      formatted_phone_number:
+                        val.result.result.formatted_phone_number,
+                      website: val.result.result.website,
+                      rating: val.result.result.rating,
+                      img: val.photos,
+                      id: this.props.id
+                    })
+                    .then(response => {
+                      this.setState({
+                        response: response.data
+                      });
+                    });
+                }}
+              />
               {this.state.switch === index ? (
                 <button onClick={e => this.setState({ switch: null })}>
                   close
@@ -99,7 +147,6 @@ class Search extends Component {
     return (
       <div>
         <Header />
-        {/* <h4>{data.geometry.name}</h4> */}
         <main className={styles.main}>
           <section className={styles.welcomeUser}>
             Welcome, {this.props.username}
@@ -127,7 +174,8 @@ class Search extends Component {
 
 const mapStateToProps = reduxState => {
   return {
-    username: reduxState.auth.username
+    username: reduxState.auth.username,
+    id: reduxState.auth.id
   };
 };
 

@@ -17,6 +17,8 @@ const {
 
 const { userLocation } = require("./controllers/mapsController");
 
+const { addFavorite, joinFavorites } = require("./controllers/favController");
+
 app.use(
   session({
     secret: SECRET,
@@ -44,6 +46,10 @@ app.get("/auth/logout", logout);
 
 /////////////// MAPS ENDPOINTS /////////////////////////////
 app.post("/api/location", userLocation);
+
+/////////////// ADD TO FAVORITES ///////////////////////////
+app.post("/api/addFavorite", addFavorite);
+app.get("/api/addFavorites", joinFavorites);
 
 app.listen(SERVER_PORT, () => {
   console.log(`listening on port ${SERVER_PORT}`);

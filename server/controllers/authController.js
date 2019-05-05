@@ -8,7 +8,7 @@ const signup = async (req, res) => {
   const result = await db.signup([username, hash]).catch(err => {
     res.status(400).json("username already exist");
   });
-  req.session.user = { username: result[0].username };
+  req.session.user = { username: result[0].username, id: result[0].id };
   res.json(result);
 };
 const login = async (req, res) => {
@@ -22,10 +22,11 @@ const login = async (req, res) => {
     );
     if (isMatch) {
       req.session.user = {
-        username: results[0].username
+        username: results[0].username,
+        id: results[0].id
       };
       console.log(results);
-      res.json({ username: results[0].username });
+      res.json(req.session.user);
     } else {
       res.status(403).json("Error: Wrong password");
     }

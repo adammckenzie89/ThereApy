@@ -4,3 +4,12 @@
   font-family: Helvetica;
   font-weight: 100;
 }
+
+@import "../search/search.module.scss";
+
+.favorites {
+  @extend .details;
+  @extend .image;
+  @extend .default_image;
+  @extend .text;
+}

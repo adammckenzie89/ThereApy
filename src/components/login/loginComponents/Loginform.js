@@ -31,6 +31,7 @@ class Loginform extends Component {
 
   render() {
     if (this.props.auth.username) {
+      console.log(this.props.username);
       return <Redirect to="/search" push={true} />;
     }
     return (

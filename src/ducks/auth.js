@@ -2,7 +2,8 @@ import axios from "axios";
 
 const initialState = {
   username: null, //null (change back)
-  error: ""
+  error: "",
+  userID: ""
 };
 
 //action types
@@ -45,12 +46,15 @@ export default function reducer(state = initialState, action) {
     case `${SIGN_UP}_FULFILLED`:
       return {
         ...state,
-        username: action.payload.data[0].username
+        username: action.payload.data.username,
+        id: action.payload.data.id
       };
     case `${LOGIN}_FULFILLED`:
+      console.log(action.payload);
       return {
         ...state,
-        username: action.payload.data.username
+        username: action.payload.data.username,
+        id: action.payload.data.id
       };
     case `${SIGN_UP}_REJECTED`:
       return {
@@ -69,7 +73,6 @@ export default function reducer(state = initialState, action) {
           username: action.payload.data.username
         };
       }
-
     case `${LOG_OUT}_FULFILLED`:
       return {
         ...state,
