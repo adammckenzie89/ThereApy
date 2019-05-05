@@ -15,6 +15,7 @@ class Places extends Component {
     return (
       <div>
         <Header />
+        <img className={styles.photo} />
         <div>
           <p className={styles.welcomeUser}>Welcome, {this.props.username}</p>
         </div>

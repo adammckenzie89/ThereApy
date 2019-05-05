@@ -4,13 +4,13 @@ body {
 }
 .welcomeUser {
   display: flex;
-  font-size: 3em;
+  font-size: 2em;
   font-family: Helvetica;
   font-weight: 100;
 }
 
 .searchBar {
-  width: 900px;
+  width: 700px;
   display: block;
   margin: 0 auto;
   //   border: 1px solid black;
@@ -41,13 +41,18 @@ body {
 }
 
 .searchIcon {
-  //   border: 1px solid green;
   position: relative;
   float: right;
-  width: 60px;
-  height: 45px;
-  top: -45px;
-  right: -45px;
+  width: 30px;
+  height: 30px;
+  top: -39px;
+  right: -35px;
+}
+
+.searchIcon:hover {
+  height: 35px;
+  width: 35px;
+  top: -39px;
 }
 
 .details {

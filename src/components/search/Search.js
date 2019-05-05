@@ -34,7 +34,6 @@ class Search extends Component {
         }&key=AIzaSyBdyzNFMobsjNsfCLy2XIno2dLW0GP3BDs`
       )
       .then(response => {
-        // console.log(response);
         this.setState(
           {
             lat: response.data.results[0].geometry.location.lat,
@@ -43,7 +42,6 @@ class Search extends Component {
           () => {
             let location = { lat: this.state.lat, lng: this.state.lng };
             axios.post("/api/location", location).then(response => {
-              // console.log(response);
               this.setState({
                 data: response.data
               });
@@ -52,32 +50,10 @@ class Search extends Component {
         );
       });
   };
-  // addFavorite = index => {
-  //   // const {
-  //   //   name,
-  //   //   formatted_address,
-  //   //   formatted_phone_number,
-  //   //   website,
-  //   //   rating
-  //   // } = this.state;
-  //   axios
-  //     .post("/api/addFavorite", {
-  //       name: [index].result.result.name,
-  //       formatted_address: [index].result.result.formatted_address,
-  //       formatted_phone_number: [index].result.result.formatted_phone_number,
-  //       website: [index].result.result.website,
-  //       rating: [index].result.result.rating,
-  //       id: this.props.id
-  //     })
-  //     .then(response => {
-  //       this.setState({
-  //         response: response.data
-  //       });
-  //     });
-  // };
+
   render() {
     const { data } = this.state;
-    // console.log(data);
+
     let displayData = this.state.data.map((val, index) => {
       return (
         <div className={styles.details} key={index}>
@@ -110,7 +86,8 @@ class Search extends Component {
             ) : null}
             <section>
               <img
-                src="https://img.icons8.com/material-outlined/24/000000/filled-like.png"
+                className={styles.searchIcon}
+                src="https://img.icons8.com/material-outlined/24/000000/filled-like.png" //heart
                 onClick={() => {
                   axios
                     .post("/api/addFavorite", {
@@ -161,7 +138,7 @@ class Search extends Component {
             />
             <img
               className={styles.searchIcon}
-              src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"
+              src="https://img.icons8.com/cotton/64/000000/search.png"
               onClick={this.getlocation}
             />
           </form>
