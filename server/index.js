@@ -17,7 +17,11 @@ const {
 
 const { userLocation } = require("./controllers/mapsController");
 
-const { addFavorite, joinFavorites } = require("./controllers/favController");
+const {
+  addFavorite,
+  joinFavorites,
+  makePosts
+} = require("./controllers/favController");
 
 app.use(
   session({
@@ -50,6 +54,7 @@ app.post("/api/location", userLocation);
 /////////////// ADD TO FAVORITES ///////////////////////////
 app.post("/api/addFavorite", addFavorite);
 app.get("/api/addFavorites", joinFavorites);
+app.post("/api/makePosts", makePosts);
 
 app.listen(SERVER_PORT, () => {
   console.log(`listening on port ${SERVER_PORT}`);

@@ -44,7 +44,15 @@ const joinFavorites = async (req, res) => {
   res.json(result);
 };
 
+const makePosts = async (req, res) => {
+  const { content, favoritesid } = req.body;
+  const dbInstance = req.app.get("db");
+  const result = await dbInstance.createPosts([content, favoritesid]);
+  res.json(result);
+};
+
 module.exports = {
   addFavorite,
-  joinFavorites
+  joinFavorites,
+  makePosts
 };

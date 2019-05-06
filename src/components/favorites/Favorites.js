@@ -10,7 +10,8 @@ class Favorites extends Component {
     super();
 
     this.state = {
-      data: []
+      data: [],
+      posts: []
     };
   }
   componentDidMount() {
@@ -23,8 +24,15 @@ class Favorites extends Component {
       });
     });
   }
+  handlePost = id => {
+    axios.post("/api/makePosts").then(response => {
+      this.setState({
+        posts: response.data
+      });
+    });
+  };
   render() {
-    console.log(this.state.data);
+    console.log(this.state.click);
     return (
       <div>
         <Header />
@@ -58,6 +66,10 @@ class Favorites extends Component {
                   </div>
                 ) : null}
                 <section>
+                  <br />
+                  {/* {this.state.switch === index ? 
+                  <button onClick={this.handlePost}>Comment</button> : }
+                  <br /> */}
                   {this.state.switch === index ? (
                     <button onClick={e => this.setState({ switch: null })}>
                       close
