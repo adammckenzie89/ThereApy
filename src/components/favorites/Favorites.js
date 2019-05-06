@@ -11,7 +11,9 @@ class Favorites extends Component {
 
     this.state = {
       data: [],
-      posts: []
+      posts: [],
+      input: "",
+      content: ""
     };
   }
   componentDidMount() {
@@ -23,16 +25,16 @@ class Favorites extends Component {
         data: response.data
       });
     });
-  }
-  handlePost = id => {
-    axios.post("/api/makePosts").then(response => {
+    axios.get("/api/joinPosts").then(response => {
       this.setState({
-        posts: response.data
+        content: response.data
       });
     });
-  };
+  }
+  // removePost = id => {
+  //   axios.delete(`/api/removePost/:${id}`);
+  // };
   render() {
-    console.log(this.state.click);
     return (
       <div>
         <Header />
@@ -41,7 +43,7 @@ class Favorites extends Component {
         </div>
         {this.state.data.map((val, index) => {
           return (
-            <div className={styles.details} key={index}>
+            <div className={styles.details} key={val.favoritesid}>
               <div className={styles.image}>
                 {val.img ? (
                   <img
@@ -67,9 +69,6 @@ class Favorites extends Component {
                 ) : null}
                 <section>
                   <br />
-                  {/* {this.state.switch === index ? 
-                  <button onClick={this.handlePost}>Comment</button> : }
-                  <br /> */}
                   {this.state.switch === index ? (
                     <button onClick={e => this.setState({ switch: null })}>
                       close
@@ -79,7 +78,65 @@ class Favorites extends Component {
                       Details
                     </button>
                   )}
+                  <br />
                 </section>
+                <div>
+                  <form
+                    onSubmit={() => {
+                      axios
+                        .post("/api/makePosts", {
+                          content: this.state.input,
+                          favoritesid: val.favoritesID
+                        })
+                        .then(response => {
+                          this.setState({ content: response.data, input: "" });
+                        })
+                        .then(() =>
+                          axios.get("/api/joinPosts").then(response => {
+                            this.setState({
+                              content: response.data
+                            });
+                          })
+                        );
+                    }}
+                  >
+                    <input
+                      className={styles.inputStuff}
+                      placeholder="Add comment"
+                      onChange={e => this.setState({ input: e.target.value })}
+                    />
+                  </form>
+                  <div>
+                    {!this.state.content
+                      ? null
+                      : this.state.content.map((item, index) => {
+                          if (item.favoritesID === val.favoritesID) {
+                            return (
+                              <div className={styles.comments}>
+                                <p>{item.content}</p>
+                                <button
+                                  onClick={e =>
+                                    axios
+                                      .delete(`/api/removePost/${item.postid}`)
+                                      .then(() =>
+                                        axios
+                                          .get("/api/joinPosts")
+                                          .then(response => {
+                                            this.setState({
+                                              content: response.data
+                                            });
+                                          })
+                                      )
+                                  }
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                            );
+                          }
+                        })}
+                  </div>
+                </div>
               </div>
             </div>
           );
@@ -99,18 +156,3 @@ export default connect(
   mapStateToProps,
   { getSession }
 )(Favorites);
-
-// return (
-//   <div className={styles.details} key={index}>
-//     <h3>{val.name}</h3>
-//     <h2>{val.address}</h2>
-//     <img
-//       src={`https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyBdyzNFMobsjNsfCLy2XIno2dLW0GP3BDs&maxwidth=400&photoreference=${
-//         val.img
-//       } `}
-//     />
-//     <h2>{val.number}</h2>
-//     <h2>{val.rating}</h2>
-//     <a href={val.website}> {val.website}</a>
-//   </div>
-// );

@@ -20,7 +20,9 @@ const { userLocation } = require("./controllers/mapsController");
 const {
   addFavorite,
   joinFavorites,
-  makePosts
+  makePosts,
+  joinPosts,
+  deletePost
 } = require("./controllers/favController");
 
 app.use(
@@ -51,10 +53,12 @@ app.get("/auth/logout", logout);
 /////////////// MAPS ENDPOINTS /////////////////////////////
 app.post("/api/location", userLocation);
 
-/////////////// ADD TO FAVORITES ///////////////////////////
+/////////////// FAVORITES ///////////////////////////
 app.post("/api/addFavorite", addFavorite);
 app.get("/api/addFavorites", joinFavorites);
 app.post("/api/makePosts", makePosts);
+app.get("/api/joinPosts", joinPosts);
+app.delete("/api/removePost/:id", deletePost);
 
 app.listen(SERVER_PORT, () => {
   console.log(`listening on port ${SERVER_PORT}`);

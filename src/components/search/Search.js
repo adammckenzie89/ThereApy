@@ -53,7 +53,6 @@ class Search extends Component {
 
   render() {
     const { data } = this.state;
-
     let displayData = this.state.data.map((val, index) => {
       return (
         <div className={styles.details} key={index}>
