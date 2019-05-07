@@ -4,13 +4,8 @@ import { Redirect } from "react-router-dom";
 import "./header.module.scss";
 import { connect } from "react-redux";
 import { logOut } from "../../ducks/auth";
-import styles from "./header.module.scss";
-import Axios from "axios";
 
 class Header extends Component {
-  constructor() {
-    super();
-  }
   render() {
     if (!this.props.auth.username) {
       return <Redirect to="/" push={true} />;
@@ -19,8 +14,8 @@ class Header extends Component {
     return (
       <div>
         <nav>
-          <Link to="/places">
-            <h3>Places</h3>
+          <Link to="/profile">
+            <h3>Profile</h3>
           </Link>
           <Link to="/favorites">
             <h3>Favorites</h3>

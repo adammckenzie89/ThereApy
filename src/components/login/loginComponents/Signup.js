@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signUp } from "../../../ducks/auth";
-import { Link } from "react-router-dom";
 import Styles from "./Signup.module.scss";
 
 class Signup extends Component {

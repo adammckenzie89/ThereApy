@@ -5,7 +5,7 @@ import axios from "axios";
 import Header from "../header/Header";
 import styles from "./search.module.scss";
 
-const { KEY } = process.env;
+// const { KEY } = process.env;
 
 class Search extends Component {
   constructor() {
@@ -52,7 +52,6 @@ class Search extends Component {
   };
 
   render() {
-    const { data } = this.state;
     let displayData = this.state.data.map((val, index) => {
       return (
         <div className={styles.details} key={index}>
@@ -62,6 +61,7 @@ class Search extends Component {
                 src={`https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyBdyzNFMobsjNsfCLy2XIno2dLW0GP3BDs&maxwidth=400&photoreference=${
                   val.photos
                 }`}
+                alt=""
               />
             ) : (
               <div className={styles.default_image} />
@@ -86,7 +86,8 @@ class Search extends Component {
             <section>
               <img
                 className={styles.searchIcon}
-                src="https://img.icons8.com/material-outlined/24/000000/filled-like.png" //heart
+                src="https://img.icons8.com/material-outlined/24/000000/filled-like.png"
+                alt="" //heart
                 onClick={() => {
                   axios
                     .post("/api/addFavorite", {
@@ -138,6 +139,7 @@ class Search extends Component {
             <img
               className={styles.searchIcon}
               src="https://img.icons8.com/cotton/64/000000/search.png"
+              alt=""
               onClick={this.getlocation}
             />
           </form>

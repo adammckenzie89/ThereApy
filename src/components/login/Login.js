@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Signup from "./loginComponents/Signup";
 import Loginform from "./loginComponents/Loginform";
 import styles from "./login.module.scss";

@@ -11,21 +11,21 @@ class Favorites extends Component {
 
     this.state = {
       data: [],
-      posts: [],
       input: "",
-      content: ""
+      content: []
     };
   }
   componentDidMount() {
     this.props.getSession();
 
     axios.get("/api/addFavorites").then(response => {
-      console.log(response);
+      console.log("FAVORITES: ", response);
       this.setState({
         data: response.data
       });
     });
     axios.get("/api/joinPosts").then(response => {
+      console.log("POSTS: ", response);
       this.setState({
         content: response.data
       });
@@ -47,6 +47,7 @@ class Favorites extends Component {
                     src={`https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyBdyzNFMobsjNsfCLy2XIno2dLW0GP3BDs&maxwidth=400&photoreference=${
                       val.img
                     } `}
+                    alt=""
                   />
                 ) : (
                   <div className={styles.default_image} />
@@ -125,34 +126,32 @@ class Favorites extends Component {
                     />
                   </form>
                   <div>
-                    {!this.state.content
-                      ? null
-                      : this.state.content.map((item, index) => {
-                          if (item.favoritesID === val.favoritesID) {
-                            return (
-                              <div className={styles.comments}>
-                                <p>{item.content}</p>
-                                <button
-                                  onClick={e =>
+                    {this.state.content.map(comment => {
+                      if (val.address === comment.address) {
+                        return (
+                          <div className={styles.comments}>
+                            <p>{comment.content}</p>
+                            <button
+                              onClick={e =>
+                                axios
+                                  .delete(`/api/removePost/${comment.postid}`)
+                                  .then(() =>
                                     axios
-                                      .delete(`/api/removePost/${item.postid}`)
-                                      .then(() =>
-                                        axios
-                                          .get("/api/joinPosts")
-                                          .then(response => {
-                                            this.setState({
-                                              content: response.data
-                                            });
-                                          })
-                                      )
-                                  }
-                                >
-                                  Delete
-                                </button>
-                              </div>
-                            );
-                          }
-                        })}
+                                      .get("/api/joinPosts")
+                                      .then(response => {
+                                        this.setState({
+                                          content: response.data
+                                        });
+                                      })
+                                  )
+                              }
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        );
+                      }
+                    })}
                   </div>
                 </div>
               </div>
