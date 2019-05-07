@@ -6,9 +6,9 @@ const addFavorite = (req, res) => {
     formatted_phone_number,
     website,
     rating,
-    img,
-    id
+    img
   } = req.body;
+  const { id } = req.session.user;
   console.log(req.body);
   dbInstance
     .addFavorites([
@@ -39,7 +39,8 @@ const addFavorite = (req, res) => {
 
 const joinFavorites = async (req, res) => {
   const dbInstance = req.app.get("db");
-  const result = await dbInstance.joinFavorites();
+  const result = await dbInstance.joinFavorites(req.session.user.id);
+  console.log(req.session.user);
   console.log(result);
   res.json(result);
 };
@@ -65,10 +66,17 @@ const deletePost = async (req, res) => {
   res.json(results);
 };
 
+const deleteFavorite = async (req, res) => {
+  const dbInstance = req.app.get("db");
+  const results = await dbInstance.deleteFavorite(+req.params.id);
+  res.json(results);
+};
+
 module.exports = {
   addFavorite,
   joinFavorites,
   makePosts,
   joinPosts,
-  deletePost
+  deletePost,
+  deleteFavorite
 };

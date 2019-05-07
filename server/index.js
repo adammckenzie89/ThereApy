@@ -22,7 +22,8 @@ const {
   joinFavorites,
   makePosts,
   joinPosts,
-  deletePost
+  deletePost,
+  deleteFavorite
 } = require("./controllers/favController");
 
 app.use(
@@ -59,6 +60,7 @@ app.get("/api/addFavorites", joinFavorites);
 app.post("/api/makePosts", makePosts);
 app.get("/api/joinPosts", joinPosts);
 app.delete("/api/removePost/:id", deletePost);
+app.delete("/api/deleteFavorite/:id", deleteFavorite);
 
 app.listen(SERVER_PORT, () => {
   console.log(`listening on port ${SERVER_PORT}`);

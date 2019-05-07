@@ -31,9 +31,6 @@ class Favorites extends Component {
       });
     });
   }
-  // removePost = id => {
-  //   axios.delete(`/api/removePost/:${id}`);
-  // };
   render() {
     return (
       <div>
@@ -56,6 +53,25 @@ class Favorites extends Component {
                 )}
               </div>
               <div className={styles.text}>
+                <div className={styles.cancel}>
+                  <button
+                    onClick={e =>
+                      axios
+                        .delete(`/api/deleteFavorite/${val.favoritesID}`)
+                        .then(() => {
+                          axios.get("/api/addFavorites").then(response => {
+                            console.log(response);
+                            this.setState({
+                              data: response.data
+                            });
+                          });
+                        })
+                    }
+                  >
+                    X
+                  </button>
+                  {/* remove post */}
+                </div>
                 <h2>{val.name}</h2>
                 {this.state.switch === index ? (
                   <div>
@@ -89,7 +105,9 @@ class Favorites extends Component {
                           favoritesid: val.favoritesID
                         })
                         .then(response => {
-                          this.setState({ content: response.data, input: "" });
+                          this.setState({
+                            content: response.data
+                          });
                         })
                         .then(() =>
                           axios.get("/api/joinPosts").then(response => {
