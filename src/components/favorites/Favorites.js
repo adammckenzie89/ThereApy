@@ -32,6 +32,7 @@ class Favorites extends Component {
     });
   }
   render() {
+    console.log(this.props);
     return (
       <div>
         <Header />
@@ -131,23 +132,25 @@ class Favorites extends Component {
                         return (
                           <div className={styles.comments}>
                             <p>{comment.content}</p>
-                            <button
-                              onClick={e =>
-                                axios
-                                  .delete(`/api/removePost/${comment.postid}`)
-                                  .then(() =>
-                                    axios
-                                      .get("/api/joinPosts")
-                                      .then(response => {
-                                        this.setState({
-                                          content: response.data
-                                        });
-                                      })
-                                  )
-                              }
-                            >
-                              Delete
-                            </button>
+                            {comment.id === this.props.id ? (
+                              <button
+                                onClick={e =>
+                                  axios
+                                    .delete(`/api/removePost/${comment.postid}`)
+                                    .then(() =>
+                                      axios
+                                        .get("/api/joinPosts")
+                                        .then(response => {
+                                          this.setState({
+                                            content: response.data
+                                          });
+                                        })
+                                    )
+                                }
+                              >
+                                Delete
+                              </button>
+                            ) : null}
                           </div>
                         );
                       }
@@ -165,7 +168,8 @@ class Favorites extends Component {
 
 const mapStateToProps = reduxState => {
   return {
-    username: reduxState.auth.username
+    username: reduxState.auth.username,
+    id: reduxState.auth.userID
   };
 };
 

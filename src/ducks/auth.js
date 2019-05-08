@@ -54,7 +54,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         username: action.payload.data.username,
-        id: action.payload.data.id
+        userID: action.payload.data.id
       };
     case `${SIGN_UP}_REJECTED`:
       return {
@@ -70,7 +70,8 @@ export default function reducer(state = initialState, action) {
       } else {
         return {
           ...state,
-          username: action.payload.data.username
+          username: action.payload.data.username,
+          userID: action.payload.data.id
         };
       }
     case `${LOG_OUT}_FULFILLED`:
