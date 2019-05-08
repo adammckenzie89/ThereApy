@@ -9,7 +9,8 @@ class Signup extends Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      email: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,11 +22,16 @@ class Signup extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.signUp(this.state.username, this.state.password);
+    this.props.signUp(
+      this.state.username,
+      this.state.password,
+      this.state.email
+    );
   }
 
   render() {
-    if (this.props.username) {
+    // console.log(this.props.username);
+    if (this.props.auth.username) {
       return <Redirect to="/search" push={true} />;
     }
     return (
@@ -47,6 +53,12 @@ class Signup extends Component {
             type="password"
           />
           <br />
+          <input
+            placeholder="email"
+            onChange={this.handleChange}
+            value={this.state.email}
+            name="email"
+          />
           <button>Submit</button>
           <p>{this.props.error}</p>
         </form>
@@ -55,12 +67,11 @@ class Signup extends Component {
   }
 }
 
-const mapStateToProps = reduxState => {
-  return {
-    username: reduxState.auth.username,
-    error: reduxState.auth.error
-  };
-};
+const mapStateToProps = reduxState => reduxState;
+// return {
+//   username: reduxState.auth.username,
+//   error: reduxState.auth.error
+// };
 
 export default connect(
   mapStateToProps,

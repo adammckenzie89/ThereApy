@@ -5,8 +5,33 @@
   font-weight: 100;
 }
 
-.photo {
-  height: 200px;
-  width: 200px;
-  border: black;
+.outerDiv {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 500px;
+  input {
+    margin: 20px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid black;
+    &::placeholder {
+      color: gray;
+    }
+  }
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.changeInfo {
+  display: flex;
+  border: 1px solid black;
+  justify-content: center;
+  h3 {
+    color: black;
+  }
 }

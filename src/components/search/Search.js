@@ -5,7 +5,7 @@ import axios from "axios";
 import Header from "../header/Header";
 import styles from "./search.module.scss";
 
-// const { KEY } = process.env;
+const { REACT_APP_KEY } = process.env;
 
 class Search extends Component {
   constructor() {
@@ -31,7 +31,7 @@ class Search extends Component {
       .get(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${
           this.state.userAddress
-        }&key=AIzaSyBdyzNFMobsjNsfCLy2XIno2dLW0GP3BDs`
+        }&key=${REACT_APP_KEY}`
       )
       .then(response => {
         this.setState(
@@ -58,7 +58,7 @@ class Search extends Component {
           <div className={styles.image}>
             {val.photos ? (
               <img
-                src={`https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyBdyzNFMobsjNsfCLy2XIno2dLW0GP3BDs&maxwidth=400&photoreference=${
+                src={`https://maps.googleapis.com/maps/api/place/photo?key=${REACT_APP_KEY}&maxwidth=400&photoreference=${
                   val.photos
                 }`}
                 alt=""
