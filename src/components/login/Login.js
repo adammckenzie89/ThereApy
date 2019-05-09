@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Signup from "./loginComponents/Signup";
 import Loginform from "./loginComponents/Loginform";
 import styles from "./login.module.scss";
+import logo from "./logo.png";
 
 class Login extends Component {
   constructor() {
@@ -45,7 +46,9 @@ class Login extends Component {
           </h4>
         </div>
         <div className={styles.login}>
-          <h1>Therapy Logo</h1>
+          <div className={styles.underline}>
+            <img className={styles.logo} src={logo} alt="logo" />
+          </div>
           {this.state.login === "showing" ? <Loginform /> : null}
           {this.state.signup === "showing" ? <Signup /> : null}
         </div>

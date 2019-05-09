@@ -6,8 +6,8 @@
 }
 
 img {
-  height: 200px;
-  width: 200px;
+  height: 90px;
+  width: 90px;
 }
 button {
   padding: 10px;
@@ -37,18 +37,20 @@ button {
 }
 
 .cancel {
-  border: 1px solid black;
+  // position: absolute;
+  // bottom: 0;
+  border: 1px solid rgb(167, 30, 30);
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 120px;
 }
 
 @import "../search/search.module.scss";
 
 .favorites {
   @extend .details;
-  @extend .image;
-  @extend .default_image;
+  // @extend .image;
+  // @extend .default_image;
   @extend .text;
 }

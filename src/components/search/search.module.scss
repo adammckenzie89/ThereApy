@@ -57,42 +57,25 @@ body {
 
 .details {
   display: flex;
-  border: 2px solid black;
+  // border: 2px solid black;
   margin: 20px;
-  height: 60vh;
+  height: 45vh;
   width: 50%;
   flex-direction: row;
-  border-radius: 10px;
   margin-left: 25%;
-  .image {
-    width: 40%;
-    height: 100%;
-    .default_image {
-      height: 100%;
-      width: 100%;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-      background-color: #76c2cc;
-      background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYUYX1U_EeOPayR05yde_BbJ0fDqe0hhyH-egtTiFtpI8H1Mvl");
-      background-size: 200px 200px;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-  }
   .text {
     display: flex;
-    width: 60%;
+    width: 100%;
     justify-content: center;
     flex-direction: column;
     background: rgb(255, 251, 246);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border: 1px solid black;
     h2 {
       color: black;
       font-family: Helvetica;
       width: 100%;
-      margin-left: 12px;
       margin-right: 12px;
+      border: 1px solid black;
     }
     h3 {
       color: black;
@@ -103,11 +86,11 @@ body {
       margin-right: 12px;
     }
     section {
+      height: 30%;
       display: flex;
       justify-content: flex-end;
-      margin: 20px;
-      margin-top: 10px;
-      img {
+      border: 1px solid black;
+      .heart {
         height: 30px;
         width: 30px;
         background: transparent;

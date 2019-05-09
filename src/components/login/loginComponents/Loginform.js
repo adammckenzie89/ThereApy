@@ -38,21 +38,33 @@ class Loginform extends Component {
       <div>
         <h1>Login</h1>
         <form className={Styles.form} onSubmit={this.handleSubmit}>
-          <input
-            placeholder="Username"
-            onChange={this.handleChange}
-            value={this.state.username}
-            name="username"
-            autoComplete="off"
-          />
+          <div className={Styles.usernamediv}>
+            <img
+              className={Styles.profileimage}
+              src="https://img.icons8.com/metro/26/000000/gender-neutral-user.png"
+            />
+            <input
+              placeholder="username"
+              onChange={this.handleChange}
+              value={this.state.username}
+              name="username"
+              autoComplete="off"
+            />
+          </div>
           <br />
-          <input
-            placeholder="password"
-            onChange={this.handleChange}
-            value={this.state.password}
-            name="password"
-            type="password"
-          />
+          <div className={Styles.passworddiv}>
+            <img
+              className={Styles.passwordicon}
+              src="https://img.icons8.com/metro/26/000000/lock-2.png"
+            />
+            <input
+              placeholder="password"
+              onChange={this.handleChange}
+              value={this.state.password}
+              name="password"
+              type="password"
+            />
+          </div>
           <br />
           <button>login</button>
         </form>

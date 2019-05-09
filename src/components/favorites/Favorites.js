@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getSession } from "../../ducks/auth";
 import { connect } from "react-redux";
 import Header from "../header/Header";
+// import Sharebutton from "../sharebutton/Sharebutton";
 import styles from "./favorites.module.scss";
 import axios from "axios";
 
@@ -42,18 +43,7 @@ class Favorites extends Component {
         {this.state.data.map((val, index) => {
           return (
             <div className={styles.details} key={val.favoritesid}>
-              <div className={styles.image}>
-                {val.img ? (
-                  <img
-                    src={`https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyBdyzNFMobsjNsfCLy2XIno2dLW0GP3BDs&maxwidth=400&photoreference=${
-                      val.img
-                    } `}
-                    alt=""
-                  />
-                ) : (
-                  <div className={styles.default_image} />
-                )}
-              </div>
+              <div className={styles.image} />
               <div className={styles.text}>
                 <div className={styles.cancel}>
                   <button
@@ -75,29 +65,24 @@ class Favorites extends Component {
                   {/* remove post */}
                 </div>
                 <h2>{val.name}</h2>
-                {this.state.switch === index ? (
-                  <div>
-                    <h3>{val.address}</h3>
-                    <h3>{val.number}</h3>
-                    {val.website ? (
-                      <a href={val.website}>{val.website.substr(7)}</a>
-                    ) : null}
-                    {val.rating > 2 ? <h3> {val.rating} </h3> : null}
-                  </div>
-                ) : null}
-                <section>
-                  <br />
-                  {this.state.switch === index ? (
-                    <button onClick={e => this.setState({ switch: null })}>
-                      close
-                    </button>
-                  ) : (
-                    <button onClick={e => this.setState({ switch: index })}>
-                      Details
-                    </button>
-                  )}
-                  <br />
-                </section>
+                {val.img ? (
+                  <img
+                    src={`https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyBdyzNFMobsjNsfCLy2XIno2dLW0GP3BDs&maxwidth=400&photoreference=${
+                      val.img
+                    } `}
+                    alt=""
+                  />
+                ) : (
+                  <div className={styles.default_image} />
+                )}
+                <div className={styles.conditional}>
+                  <h3>{val.address}</h3>
+                  <h3>{val.number}</h3>
+                  {val.website ? (
+                    <a href={val.website}>{val.website.substr(7)}</a>
+                  ) : null}
+                  <h3> {val.rating} </h3>
+                </div>
                 <div>
                   <form
                     onSubmit={() => {
@@ -120,11 +105,11 @@ class Favorites extends Component {
                         );
                     }}
                   >
-                    <input
+                    {/* <input
                       className={styles.inputStuff}
                       placeholder="Add comment"
                       onChange={e => this.setState({ input: e.target.value })}
-                    />
+                    /> */}
                   </form>
                   <div>
                     {this.state.content.map(comment => {
@@ -155,6 +140,7 @@ class Favorites extends Component {
                         );
                       }
                     })}
+                    {/* <Sharebutton /> */}
                   </div>
                 </div>
               </div>

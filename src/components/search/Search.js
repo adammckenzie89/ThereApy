@@ -55,7 +55,9 @@ class Search extends Component {
     let displayData = this.state.data.map((val, index) => {
       return (
         <div className={styles.details} key={index}>
-          <div className={styles.image}>
+          <div className={styles.image} />
+          <div className={styles.text}>
+            <h2>{val.result.result.name}</h2>
             {val.photos ? (
               <img
                 src={`https://maps.googleapis.com/maps/api/place/photo?key=${REACT_APP_KEY}&maxwidth=400&photoreference=${
@@ -63,29 +65,20 @@ class Search extends Component {
                 }`}
                 alt=""
               />
-            ) : (
-              <div className={styles.default_image} />
-            )}
-          </div>
-          <div className={styles.text}>
-            <h2>{val.result.result.name}</h2>
-            {this.state.switch === index ? (
-              <div>
-                <h3>{val.result.result.formatted_address}</h3>
-                <h3>{val.result.result.formatted_phone_number}</h3>
-                {val.result.result.website ? (
-                  <a href={val.result.result.website}>
-                    {val.result.result.website.substr(7)}
-                  </a>
-                ) : null}
-                {val.result.result.rating > 2 ? (
-                  <h3> {val.result.result.rating} </h3>
-                ) : null}
-              </div>
             ) : null}
+            <div>
+              <h3>{val.result.result.formatted_address}</h3>
+              <h3>{val.result.result.formatted_phone_number}</h3>
+              {val.result.result.website ? (
+                <a href={val.result.result.website}>
+                  {val.result.result.website.substr(7)}
+                </a>
+              ) : null}
+              <h3> {val.result.result.rating} </h3>
+            </div>
             <section>
               <img
-                className={styles.searchIcon}
+                className={styles.heart}
                 src="https://img.icons8.com/material-outlined/24/000000/filled-like.png"
                 alt="" //heart
                 onClick={() => {
@@ -107,15 +100,6 @@ class Search extends Component {
                     });
                 }}
               />
-              {this.state.switch === index ? (
-                <button onClick={e => this.setState({ switch: null })}>
-                  close
-                </button>
-              ) : (
-                <button onClick={e => this.setState({ switch: index })}>
-                  Details
-                </button>
-              )}
             </section>
           </div>
         </div>
