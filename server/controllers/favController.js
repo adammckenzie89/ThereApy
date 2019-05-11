@@ -46,10 +46,16 @@ const joinFavorites = async (req, res) => {
 };
 
 const makePosts = async (req, res) => {
-  const { content, favoritesid } = req.body;
+  const { content, favoritesid, time, username } = req.body;
   console.log("fav id for posts console log", favoritesid);
   const dbInstance = req.app.get("db");
-  const result = await dbInstance.createPosts([content, favoritesid]);
+  const result = await dbInstance.createPosts([
+    content,
+    favoritesid,
+    time,
+    username
+  ]);
+  console.log(result);
   res.json(result);
 };
 

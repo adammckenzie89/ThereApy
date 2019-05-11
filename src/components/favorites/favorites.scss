@@ -1,0 +1,157 @@
+.everything {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  height: 700px;
+  justify-content: space-evenly;
+}
+
+.welcomeUser {
+  display: flex;
+  font-size: 3em;
+  font-family: Helvetica;
+  font-weight: 100;
+}
+
+.delete_card {
+  padding: 10px;
+  // margin: 10px;
+  // margin-left: 15%;
+}
+
+.inputStuff {
+  // border: 1px solid rgb(219, 59, 59);
+  border-radius: 25px;
+  margin-top: 18px;
+  height: 25px;
+  width: 300px;
+  &::placeholder {
+    color: gray;
+  }
+}
+.conditional {
+  background: rgb(255, 251, 246);
+}
+
+.comments {
+  // border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 35px;
+  // background: rgb(250, 241, 228);
+  border-radius: 25px;
+  width: 90%;
+  div {
+    background: rgb(250, 241, 228);
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    border: 1px solid rgb(43, 39, 39);
+    width: 100%;
+    align-items: center;
+    border-radius: 25px;
+    margin-top: 10px;
+    button {
+      height: 25px;
+      width: 45px;
+      justify-content: center;
+      align-content: center;
+      border: 1px solid white;
+      margin-left: 10%;
+    }
+  }
+}
+.comment_space {
+  display: flex; //button space
+  justify-content: center;
+  border-top: 1px solid rgb(190, 69, 69);
+  width: 80%;
+  height: 15%;
+  margin-left: 10%;
+  padding-top: 8px;
+}
+.slide_undefined {
+  display: flex;
+  background: rgb(241, 235, 153);
+  flex-direction: column;
+  align-items: center;
+  height: 0;
+  width: 45%;
+  border: 1px solid black;
+  overflow: hidden;
+}
+.deletebutton {
+  margin-left: 80%;
+}
+.slide_closed {
+  display: flex;
+  background: rgb(241, 235, 153);
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  height: 0;
+  width: 45%;
+  border: 1px solid black;
+}
+.slide_open {
+  display: flex;
+  background: rgb(241, 235, 153);
+  overflow-y: scroll;
+  flex-direction: column;
+  align-items: center;
+  height: 0;
+  width: 45%;
+  border: 1px solid black;
+  height: 300px;
+  animation-name: slide-down;
+  animation-duration: 0.5s;
+}
+.slide_closed {
+  display: flex;
+  background: rgb(241, 235, 153);
+  overflow-y: scroll;
+  flex-direction: column;
+  align-items: center;
+  height: 0;
+  width: 45%;
+  border: 1px solid black;
+  height: 300px;
+  animation-name: slide-up;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+}
+
+@keyframes slide-down {
+  0% {
+    height: 0vh;
+  }
+  100% {
+    height: 300px;
+  }
+}
+@keyframes slide-up {
+  0% {
+    height: 300px;
+  }
+  100% {
+    height: 0vh;
+  }
+}
+
+.cancel {
+  border: 1px solid rgb(167, 30, 30);
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 120px;
+}
+
+@import "../search/search.module.scss";
+
+.favorites {
+  @extend .details;
+  @extend .card;
+  @extend .name_space;
+  @extend .details_space;
+  @extend h2;
+}

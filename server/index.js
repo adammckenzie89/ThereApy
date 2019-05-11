@@ -18,6 +18,8 @@ const {
 
 const { userLocation } = require("./controllers/mapsController");
 
+const { sendEmail } = require("./controllers/nodemailerController");
+
 const {
   addFavorite,
   joinFavorites,
@@ -48,7 +50,7 @@ massive(CONNECTION_STRING)
 /////////////// LOGIN ENDPOIONTS////////////////////////////
 
 app.get("/auth/cookie", getUser);
-app.post("/auth/signup", signup);
+app.post("/auth/signup", signup, sendEmail);
 app.post("/auth/login", login);
 app.get("/auth/logout", logout);
 app.put("/auth/editProfile", editProfile);
@@ -63,6 +65,7 @@ app.post("/api/makePosts", makePosts);
 app.get("/api/joinPosts", joinPosts);
 app.delete("/api/removePost/:id", deletePost);
 app.delete("/api/deleteFavorite/:id", deleteFavorite);
+
 app.listen(SERVER_PORT, () => {
   console.log(`listening on port ${SERVER_PORT}`);
 });

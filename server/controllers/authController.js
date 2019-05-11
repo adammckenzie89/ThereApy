@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 
-const signup = async (req, res) => {
+const signup = async (req, res, next) => {
   const db = req.app.get("db");
   const { username, password, email } = req.body;
   const hash = await bcrypt.hash(password, 12);
@@ -9,6 +9,7 @@ const signup = async (req, res) => {
     res.status(400).json("username already exist");
   });
   req.session.user = { username: result[0].username, id: result[0].id };
+  next();
   res.json(result);
 };
 const login = async (req, res) => {

@@ -55,18 +55,11 @@ class Search extends Component {
     let displayData = this.state.data.map((val, index) => {
       return (
         <div className={styles.details} key={index}>
-          <div className={styles.image} />
-          <div className={styles.text}>
-            <h2>{val.result.result.name}</h2>
-            {val.photos ? (
-              <img
-                src={`https://maps.googleapis.com/maps/api/place/photo?key=${REACT_APP_KEY}&maxwidth=400&photoreference=${
-                  val.photos
-                }`}
-                alt=""
-              />
-            ) : null}
-            <div>
+          <div className={styles.card}>
+            <div className={styles.name_space}>
+              <h2>{val.result.result.name}</h2>
+            </div>
+            <div className={styles.details_space}>
               <h3>{val.result.result.formatted_address}</h3>
               <h3>{val.result.result.formatted_phone_number}</h3>
               {val.result.result.website ? (

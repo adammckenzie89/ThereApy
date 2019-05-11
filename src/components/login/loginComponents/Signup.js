@@ -30,48 +30,67 @@ class Signup extends Component {
   }
 
   render() {
-    // console.log(this.props.username);
-    if (this.props.auth.username) {
+    console.log(this.props);
+    if (this.props.username) {
       return <Redirect to="/search" push={true} />;
     }
     return (
       <div>
         <h1>Signup</h1>
         <form className={Styles.form} onSubmit={this.handleSubmit}>
-          <input
-            placeholder="username"
-            onChange={this.handleChange}
-            value={this.state.username}
-            name="username"
-          />
+          <div styles={Styles.usernamediv}>
+            <img
+              className={Styles.profileimage}
+              src="https://img.icons8.com/metro/26/000000/gender-neutral-user.png"
+            />
+            <input
+              placeholder="username"
+              onChange={this.handleChange}
+              value={this.state.username}
+              name="username"
+            />
+          </div>
           <br />
-          <input
-            placeholder="password"
-            onChange={this.handleChange}
-            value={this.state.password}
-            name="password"
-            type="password"
-          />
+          <div className={Styles.passworddiv}>
+            <img
+              className={Styles.passwordicon}
+              src="https://img.icons8.com/metro/26/000000/lock-2.png"
+            />
+            <input
+              placeholder="password"
+              onChange={this.handleChange}
+              value={this.state.password}
+              name="password"
+              type="password"
+            />
+          </div>
           <br />
-          <input
-            placeholder="email"
-            onChange={this.handleChange}
-            value={this.state.email}
-            name="email"
-          />
+          <div className={Styles.emaildiv}>
+            <img
+              className={Styles.emailicon}
+              src="https://img.icons8.com/ios/50/000000/secured-letter-filled.png"
+            />
+            <input
+              placeholder="email"
+              onChange={this.handleChange}
+              value={this.state.email}
+              name="email"
+            />
+            <p>{this.props.error}</p>
+          </div>
           <button>Submit</button>
-          <p>{this.props.error}</p>
         </form>
       </div>
     );
   }
 }
 
-const mapStateToProps = reduxState => reduxState;
-// return {
-//   username: reduxState.auth.username,
-//   error: reduxState.auth.error
-// };
+const mapStateToProps = reduxState => {
+  return {
+    username: reduxState.auth.username,
+    error: reduxState.auth.error
+  };
+};
 
 export default connect(
   mapStateToProps,

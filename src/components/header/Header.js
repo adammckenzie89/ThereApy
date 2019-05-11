@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import "./header.module.scss";
 import { connect } from "react-redux";
 import { logOut } from "../../ducks/auth";
+import styles from "./header.module.scss";
 
 class Header extends Component {
   render() {
@@ -34,6 +35,11 @@ class Header extends Component {
             </h3>
           </div>
         </nav>
+        <section className={styles.headerextension}>
+          <div className={styles.one}>Info Graphic 1</div>
+          <div className={styles.two}>Info graphic 2</div>
+          <div className={styles.three}>Info graphic 3</div>
+        </section>
       </div>
     );
   }
