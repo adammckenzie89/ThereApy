@@ -42,7 +42,11 @@ class Favorites extends Component {
   }
   dropDown = index => {
     let { dropDown } = this.state;
-    if (this.state.dropDown[index] === "closed") {
+    console.log(this.state.dropDown);
+    if (
+      this.state.dropDown[index] === "closed" ||
+      this.state.dropDown[index] === undefined
+    ) {
       dropDown[index] = "open";
     } else {
       dropDown[index] = "closed";
