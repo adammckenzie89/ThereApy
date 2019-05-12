@@ -5,6 +5,7 @@ import "./header.module.scss";
 import { connect } from "react-redux";
 import { logOut } from "../../ducks/auth";
 import styles from "./header.module.scss";
+import logo from "./logo.png";
 
 class Header extends Component {
   render() {
@@ -13,19 +14,25 @@ class Header extends Component {
     }
     console.log(this.props);
     return (
-      <div>
+      <div className={styles.outer}>
         <nav>
-          <Link to="/profile">
-            <h3>Profile</h3>
-          </Link>
-          <Link to="/favorites">
-            <h3>Favorites</h3>
-          </Link>
-          <Link to="search">
-            <h3>Search</h3>
-          </Link>
+          <div className={styles.logoContainer}>
+            <img className={styles.headerLogo} src={logo} alt="logo" />
+          </div>
+          <div className={styles.linksCon}>
+            <Link to="/profile">
+              <h3>Profile</h3>
+            </Link>
+            <Link to="/favorites">
+              <h3>Favorites</h3>
+            </Link>
+            <Link to="search">
+              <h3>Search</h3>
+            </Link>
+          </div>
           <div>
             <h3
+              className={styles.logout}
               onClick={() => {
                 this.props.logOut();
                 window.location.reload();
@@ -36,9 +43,31 @@ class Header extends Component {
           </div>
         </nav>
         <section className={styles.headerextension}>
-          <div className={styles.one}>Info Graphic 1</div>
-          <div className={styles.two}>Info graphic 2</div>
-          <div className={styles.three}>Info graphic 3</div>
+          <div className={styles.one}>
+            <img
+              className={styles.feelBetter}
+              src="https://img.icons8.com/ios/100/000000/dancing-party-filled.png"
+            />
+            <p>
+              It's time for you to start feeling better. you owe it to yourself!
+            </p>
+          </div>
+          <div className={styles.two}>
+            <img
+              className={styles.geolocation}
+              src="http://chittagongit.com/images/geo-location-icon/geo-location-icon-3.jpg"
+            />
+            <p>
+              We use built in geolocation to find a therapist closest to you
+            </p>
+          </div>
+          <div className={styles.three}>
+            <img
+              className={styles.comment}
+              src="https://img.icons8.com/ios/100/000000/feedback-filled.png"
+            />
+            <p>Share you experience with other users</p>
+          </div>
         </section>
       </div>
     );

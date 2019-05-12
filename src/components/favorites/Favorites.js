@@ -60,123 +60,126 @@ class Favorites extends Component {
     return (
       <div>
         <Header />
-        <div>
-          <p className="welcomeUser">Welcome, {this.props.username}</p>
-        </div>
-        {this.state.data.map((val, index) => {
-          return (
-            <div className="everything">
-              <div className="details" key={val.favoritesid}>
-                <div className="card">
-                  <div className="name_space">
-                    <h2>{val.name}</h2>
-                    <button
-                      className="delete_card"
-                      onClick={e =>
-                        axios
-                          .delete(`/api/deleteFavorite/${val.favoritesID}`)
-                          .then(() => {
-                            axios.get("/api/addFavorites").then(response => {
-                              console.log(response);
-                              this.setState({
-                                data: response.data
+        <div className="bigContainer">
+          <div>
+            <p className="welcomeUser">Welcome, {this.props.username}</p>
+          </div>
+          {this.state.data.map((val, index) => {
+            return (
+              <div className="everything">
+                <div className="details" key={val.favoritesid}>
+                  <div className="card">
+                    <div className="name_space">
+                      <h2>{val.name}</h2>
+                      <button
+                        className="delete_card"
+                        onClick={e =>
+                          axios
+                            .delete(`/api/deleteFavorite/${val.favoritesID}`)
+                            .then(() => {
+                              axios.get("/api/addFavorites").then(response => {
+                                console.log(response);
+                                this.setState({
+                                  data: response.data
+                                });
                               });
-                            });
+                            })
+                        }
+                      >
+                        X
+                      </button>
+                    </div>
+                    <div className="details_space">
+                      <h3>{val.address}</h3>
+                      <h3>{val.number}</h3>
+                      {val.website ? (
+                        <a href={val.website}>{val.website.substr(7)}</a>
+                      ) : null}
+                      <h3> {val.rating} </h3>
+                    </div>
+                    <div className="comment_space">
+                      <button onClick={() => this.dropDown(index)}>
+                        Comments
+                      </button>
+                    </div>
+                  </div>
+                  <div className={`slide_${this.state.dropDown[index]}`}>
+                    {console.log(this.state.dropDown[index])}
+                    <form
+                      onSubmit={() => {
+                        axios
+                          .post("/api/makePosts", {
+                            content: this.state.input, //functionality for comments/ delete comments
+                            favoritesid: val.favoritesID,
+                            username: this.props.username,
+                            time: new Date().toLocaleString()
                           })
-                      }
-                    >
-                      X
-                    </button>
-                  </div>
-                  <div className="details_space">
-                    <h3>{val.address}</h3>
-                    <h3>{val.number}</h3>
-                    {val.website ? (
-                      <a href={val.website}>{val.website.substr(7)}</a>
-                    ) : null}
-                    <h3> {val.rating} </h3>
-                  </div>
-                  <div className="comment_space">
-                    <button onClick={() => this.dropDown(index)}>
-                      Comments
-                    </button>
-                  </div>
-                </div>
-                <div className={`slide_${this.state.dropDown[index]}`}>
-                  {console.log(this.state.dropDown[index])}
-                  <form
-                    onSubmit={() => {
-                      axios
-                        .post("/api/makePosts", {
-                          content: this.state.input, //functionality for comments/ delete comments
-                          favoritesid: val.favoritesID,
-                          username: this.props.username,
-                          time: new Date().toLocaleString()
-                        })
-                        .then(response => {
-                          this.setState({
-                            content: response.data
-                          });
-                        })
-                        .then(() =>
-                          axios.get("/api/joinPosts").then(response => {
+                          .then(response => {
                             this.setState({
                               content: response.data
                             });
                           })
-                        );
-                    }}
-                  >
-                    <input
-                      className="inputStuff"
-                      placeholder="Add comment"
-                      onChange={e => this.setState({ input: e.target.value })}
-                    />
-                  </form>
-                  <div className="comments">
-                    {this.state.content.map(comment => {
-                      if (val.address === comment.address) {
-                        return (
-                          <div>
-                            {comment.time ? (
-                              <p>
-                                {comment.username}
-                                <div>{comment.content}</div>{" "}
-                                {comment.time.substr(0, 9)}{" "}
-                                {comment.time.substr(11, 4)}{" "}
-                                {comment.time.substr(18)}
-                              </p>
-                            ) : null}
-                            {comment.id === this.props.id ? (
-                              <button
-                                className="deleteButton"
-                                onClick={e =>
-                                  axios
-                                    .delete(`/api/removePost/${comment.postid}`)
-                                    .then(() =>
-                                      axios
-                                        .get("/api/joinPosts")
-                                        .then(response => {
-                                          this.setState({
-                                            content: response.data
-                                          });
-                                        })
-                                    )
-                                }
-                              >
-                                Delete
-                              </button>
-                            ) : null}
-                          </div>
-                        );
-                      }
-                    })}
+                          .then(() =>
+                            axios.get("/api/joinPosts").then(response => {
+                              this.setState({
+                                content: response.data
+                              });
+                            })
+                          );
+                      }}
+                    >
+                      <input
+                        className="inputStuff"
+                        placeholder="Add comment"
+                        onChange={e => this.setState({ input: e.target.value })}
+                      />
+                    </form>
+                    <div className="comments">
+                      {this.state.content.map(comment => {
+                        if (val.address === comment.address) {
+                          return (
+                            <div>
+                              {comment.time ? (
+                                <p className="paragraph">
+                                  {comment.username} <br />
+                                  {comment.content} {comment.time.substr(0, 9)}{" "}
+                                  {comment.time.substr(11, 4)}{" "}
+                                  {comment.time.substr(18)}
+                                </p>
+                              ) : null}
+                              {comment.id === this.props.id ? (
+                                <button
+                                  className="deleteButton"
+                                  onClick={e =>
+                                    axios
+                                      .delete(
+                                        `/api/removePost/${comment.postid}`
+                                      )
+                                      .then(() =>
+                                        axios
+                                          .get("/api/joinPosts")
+                                          .then(response => {
+                                            this.setState({
+                                              content: response.data
+                                            });
+                                          })
+                                      )
+                                  }
+                                >
+                                  Delete
+                                </button>
+                              ) : null}
+                            </div>
+                          );
+                        }
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     );
   }

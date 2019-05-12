@@ -12,12 +12,14 @@
   width: 40%;
   height: 600px;
   margin-left: 30%;
+  background: white;
 
   input {
     margin: 20px;
     border: none;
     background: transparent;
     border-bottom: 1px solid black;
+    outline: none;
     &::placeholder {
       color: gray;
     }

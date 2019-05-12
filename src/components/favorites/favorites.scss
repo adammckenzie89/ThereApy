@@ -1,7 +1,18 @@
+.bigContainer {
+  // border: 2px solid white;
+  overflow-y: scroll;
+  background-image: url("https://images.unsplash.com/photo-1486669272089-107fe098f46d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
 .everything {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  // border: 1px solid black;
   height: 700px;
   justify-content: space-evenly;
 }
@@ -25,12 +36,21 @@
   margin-top: 18px;
   height: 25px;
   width: 300px;
+  outline: none;
   &::placeholder {
     color: gray;
   }
 }
 .conditional {
   background: rgb(255, 251, 246);
+}
+
+.paragraph {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  align-content: center;
+  width: 75%;
 }
 
 .comments {
@@ -46,18 +66,19 @@
     display: flex;
     flex-direction: row;
     padding-left: 10px;
-    border: 1px solid rgb(43, 39, 39);
+    border: 1px solid rgb(175, 64, 64);
     width: 100%;
     align-items: center;
     border-radius: 25px;
     margin-top: 10px;
     button {
       height: 25px;
-      width: 45px;
+      width: 50px;
       justify-content: center;
       align-content: center;
-      border: 1px solid white;
+      // border: 1px solid white;
       margin-left: 10%;
+      border-radius: 25px;
     }
   }
 }
