@@ -57,6 +57,7 @@ class Favorites extends Component {
   };
   render() {
     console.log(this.state.content);
+    console.log(this.state.input);
     return (
       <div className="mother">
         <Header />
@@ -114,7 +115,8 @@ class Favorites extends Component {
                           })
                           .then(response => {
                             this.setState({
-                              content: response.data
+                              content: response.data,
+                              input: ""
                             });
                           })
                           .then(() =>
@@ -127,6 +129,7 @@ class Favorites extends Component {
                       }}
                     >
                       <input
+                        value={this.state.input}
                         className="inputStuff"
                         placeholder="Add comment"
                         onChange={e => this.setState({ input: e.target.value })}
@@ -140,9 +143,12 @@ class Favorites extends Component {
                               {comment.time ? (
                                 <p className="paragraph">
                                   <strong>{comment.username}</strong> <br />
-                                  {comment.content} {comment.time.substr(0, 9)}{" "}
-                                  {comment.time.substr(11, 4)}{" "}
-                                  {comment.time.substr(18)}
+                                  <strong>
+                                    {comment.time.substr(0, 9)}{" "}
+                                    {comment.time.substr(11, 4)}{" "}
+                                    {comment.time.substr(18)}
+                                  </strong>
+                                  {comment.content}
                                 </p>
                               ) : null}
                               {comment.id === this.props.id ? (

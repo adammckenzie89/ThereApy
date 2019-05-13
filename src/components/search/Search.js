@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import Header from "../header/Header";
 import styles from "./search.module.scss";
+import Spinner from "react-spinkit";
 
 const { REACT_APP_KEY } = process.env;
 
@@ -20,7 +21,8 @@ class Search extends Component {
       formatted_address: "",
       formatted_phone_number: "",
       website: "",
-      rating: ""
+      rating: "",
+      loading: false
     };
   }
   componentDidMount() {
@@ -52,6 +54,8 @@ class Search extends Component {
   };
 
   render() {
+    console.log(this.state.loading);
+    console.log(this.state.data.length);
     let displayData = this.state.data.map((val, index) => {
       return (
         <div>
@@ -103,6 +107,7 @@ class Search extends Component {
     return (
       <div>
         <Header />
+
         <div className={styles.bigContainer}>
           <main className={styles.main}>
             <section className={styles.welcomeUser}>
@@ -120,10 +125,22 @@ class Search extends Component {
                 className={styles.searchIcon}
                 src="https://img.icons8.com/cotton/64/000000/search.png"
                 alt=""
-                onClick={this.getlocation}
+                onClick={() => {
+                  this.getlocation();
+                  this.setState({
+                    loading: true
+                  });
+                }}
               />
             </form>
-            <div className={styles.searchResults}>{displayData}</div>
+            <div className={styles.searchResults}>
+              {displayData}
+              {this.state.loading === true && this.state.data.length === 0 ? (
+                <div className={styles.spinner}>
+                  <Spinner name="ball-spin-fade-loader" />
+                </div>
+              ) : null}
+            </div>
           </main>
         </div>
       </div>
