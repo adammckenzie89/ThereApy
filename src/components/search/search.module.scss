@@ -9,6 +9,28 @@ body {
   font-size: 2em;
   font-family: Helvetica;
   font-weight: 100;
+  border: 1px solid orange;
+  justify-content: center;
+  align-items: center;
+  background: antiquewhite;
+  color: rgb(17, 42, 70);
+  height: 100px;
+}
+
+.bigContainer {
+  border: 20px solid rgb(17, 42, 70);
+  overflow-y: scroll;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.6)
+    ),
+    url("https://images.unsplash.com/photo-1493552152660-f915ab47ae9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  // background: rgb(255, 255, 255);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 .searchBar {
@@ -72,7 +94,7 @@ body {
     width: 45%;
     justify-content: center;
     flex-direction: column;
-    background: rgb(250, 241, 228);
+    background: rgb(255, 255, 255);
     margin-top: 10px;
     // border: 2px solid rgb(236, 135, 194);
     height: 400px;
@@ -83,7 +105,7 @@ body {
       width: 100%;
       // border: 1px solid black;
       height: 30%;
-      background: rgb(255, 176, 162);
+      background: rgb(247, 94, 74);
       h2 {
         color: rgb(255, 255, 255);
         font-family: Helvetica;
@@ -99,7 +121,7 @@ body {
       width: 100%;
       // border: 1px solid black;
       h3 {
-        color: black;
+        color: rgb(247, 94, 74);
         font-family: Helvetica;
         font-size: 14px;
       }
@@ -108,13 +130,13 @@ body {
       height: 15%;
       display: flex;
       justify-content: flex-end;
-      // border: 1px solid black;
       .heart {
         height: 30px;
         width: 30px;
         background: transparent;
         margin-top: 2%;
         margin-right: 5%;
+        cursor: pointer;
       }
     }
   }

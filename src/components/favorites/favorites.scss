@@ -1,12 +1,30 @@
+// .mother {
+//   background: lightblue;
+//   border: 1px solid red;
+// }
+
 .bigContainer {
-  // border: 2px solid white;
+  // display: flex;
+  border: 20px solid rgb(17, 42, 70);
   overflow-y: scroll;
-  background-image: url("https://images.unsplash.com/photo-1486669272089-107fe098f46d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.6)
+    ),
+    url("https://images.unsplash.com/photo-1493552152660-f915ab47ae9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  // background: rgb(255, 255, 255);
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  // background-size: 100vh;
+  // background-size: 100%;
+  // justify-content: center;
   height: 100vh;
+  // width: 100%;
+  // width: 90%;
+  // margin: 50px;
+  // margin-left: 120px;
 }
 
 .everything {
@@ -38,7 +56,7 @@
   width: 300px;
   outline: none;
   &::placeholder {
-    color: gray;
+    color: rgb(247, 94, 74);
   }
 }
 .conditional {
@@ -48,6 +66,7 @@
 .paragraph {
   display: flex;
   flex-direction: column;
+  color: rgb(17, 42, 70);
   word-wrap: break-word;
   align-content: center;
   width: 75%;
@@ -62,17 +81,20 @@
   border-radius: 25px;
   width: 90%;
   div {
-    background: rgb(250, 241, 228);
+    background: rgb(250, 250, 255);
     display: flex;
     flex-direction: row;
     padding-left: 10px;
-    border: 1px solid rgb(175, 64, 64);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3);
     width: 100%;
     align-items: center;
+    // border: 1px solid black;
     border-radius: 25px;
     margin-top: 10px;
     button {
-      height: 25px;
+      height: 30px;
+      color: white;
+      background: rgb(247, 94, 74);
       width: 50px;
       justify-content: center;
       align-content: center;
@@ -85,7 +107,7 @@
 .comment_space {
   display: flex; //button space
   justify-content: center;
-  border-top: 1px solid rgb(190, 69, 69);
+  border-top: 3px solid rgb(247, 94, 74);
   width: 80%;
   height: 15%;
   margin-left: 10%;
@@ -93,12 +115,12 @@
 }
 .slide_undefined {
   display: flex;
-  background: rgb(241, 235, 153);
+  background: rgb(228, 242, 252);
   flex-direction: column;
   align-items: center;
   height: 0;
   width: 45%;
-  border: 1px solid black;
+  // border: 1px solid black;
   overflow: hidden;
   // animation-name: slide-closed;
 }
@@ -107,30 +129,31 @@
 }
 .slide_closed {
   display: flex;
-  background: rgb(241, 235, 153);
+  background: rgb(228, 242, 252);
   overflow: hidden;
   flex-direction: column;
   align-items: center;
   height: 0;
   width: 45%;
-  border: 1px solid black;
+  // border: 1px solid black;
 }
 .slide_open {
   display: flex;
-  background: rgb(241, 235, 153);
+  background: rgb(228, 242, 252);
   overflow-y: scroll;
   flex-direction: column;
   align-items: center;
   height: 0;
   width: 45%;
-  border: 1px solid black;
+  border-top: 3px solid rgb(247, 94, 74);
+  // border: 1px solid black;
   height: 300px;
   animation-name: slide-down;
   animation-duration: 0.5s;
 }
 .slide_closed {
   display: flex;
-  background: rgb(241, 235, 153);
+  background: rgb(228, 242, 252);
   overflow-y: scroll;
   flex-direction: column;
   align-items: center;

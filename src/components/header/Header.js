@@ -21,13 +21,13 @@ class Header extends Component {
           </div>
           <div className={styles.linksCon}>
             <Link to="/profile">
-              <h3>Profile</h3>
+              <h3 className={styles.links}>Profile</h3>
             </Link>
             <Link to="/favorites">
-              <h3>Favorites</h3>
+              <h3 className={styles.links}>Favorites</h3>
             </Link>
             <Link to="search">
-              <h3>Search</h3>
+              <h3 className={styles.links}>Search</h3>
             </Link>
           </div>
           <div>

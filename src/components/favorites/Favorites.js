@@ -58,12 +58,10 @@ class Favorites extends Component {
   render() {
     console.log(this.state.content);
     return (
-      <div>
+      <div className="mother">
         <Header />
         <div className="bigContainer">
-          <div>
-            <p className="welcomeUser">Welcome, {this.props.username}</p>
-          </div>
+          <div />
           {this.state.data.map((val, index) => {
             return (
               <div className="everything">
@@ -141,7 +139,7 @@ class Favorites extends Component {
                             <div>
                               {comment.time ? (
                                 <p className="paragraph">
-                                  {comment.username} <br />
+                                  <strong>{comment.username}</strong> <br />
                                   {comment.content} {comment.time.substr(0, 9)}{" "}
                                   {comment.time.substr(11, 4)}{" "}
                                   {comment.time.substr(18)}

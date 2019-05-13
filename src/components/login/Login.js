@@ -21,6 +21,7 @@ class Login extends Component {
           <h2>Hello! Lets get you started</h2>
           <br />
           <h4
+            className={styles.signOrLog}
             onClick={e => {
               if (this.state.shown === "signup") {
                 this.setState({
