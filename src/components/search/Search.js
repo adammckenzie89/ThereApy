@@ -106,14 +106,14 @@ class Search extends Component {
         <div className={styles.bigContainer}>
           <main className={styles.main}>
             <section className={styles.welcomeUser}>
-              Welcome, {this.props.username}
+              Talk to somebody in your area {this.props.username}
             </section>
             <br />
             <form className={styles.searchBar}>
               <input
                 type="text"
                 id={styles.search_bar}
-                placeholder="Find a place near you"
+                placeholder="Enter your location"
                 onChange={e => this.setState({ userAddress: e.target.value })}
               />
               <img

@@ -18,33 +18,35 @@ class Login extends Component {
     return (
       <div className={styles.body}>
         <div className={styles.welcome}>
-          <h2>Hello! Lets get you started</h2>
-          <br />
-          <h4
-            className={styles.signOrLog}
-            onClick={e => {
-              if (this.state.shown === "signup") {
-                this.setState({
-                  login: "not showing",
-                  signup: "showing",
-                  shown: "login"
-                });
-              } else if (this.state.shown === "login") {
-                this.setState({
-                  login: "showing",
-                  signup: "not showing",
-                  shown: "signup"
-                });
-              }
-            }}
-          >
-            {this.state.shown === "signup"
-              ? "Signup"
-              : this.state.shown === "login"
-              ? "Login"
-              : null}{" "}
-            here
-          </h4>
+          <div className={styles.aroundWelcome}>
+            <h2>Hello! Lets get you started</h2>
+            <br />
+            <h4
+              className={styles.signOrLog}
+              onClick={e => {
+                if (this.state.shown === "signup") {
+                  this.setState({
+                    login: "not showing",
+                    signup: "showing",
+                    shown: "login"
+                  });
+                } else if (this.state.shown === "login") {
+                  this.setState({
+                    login: "showing",
+                    signup: "not showing",
+                    shown: "signup"
+                  });
+                }
+              }}
+            >
+              {this.state.shown === "signup"
+                ? "Signup"
+                : this.state.shown === "login"
+                ? "Login"
+                : null}{" "}
+              here
+            </h4>
+          </div>
         </div>
         <div className={styles.login}>
           <div className={styles.underline}>
