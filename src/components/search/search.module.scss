@@ -42,13 +42,9 @@
   width: 50%;
   display: block;
   margin: 0 auto;
-  // margin-bottom: 20px;
-  //   border: 1px solid black;
 }
 
 #search_bar {
-  // border: 1px solid red;
-  // margin-bottom: 20px;
   width: 100%;
   height: 45px;
   padding: 0 20px;
@@ -87,7 +83,6 @@
 
 .details {
   display: flex;
-  // border: 2px solid rgb(201, 16, 16);
   height: 700px;
   width: 100%;
   justify-content: center;
@@ -96,19 +91,18 @@
   align-items: center;
   .card {
     display: flex;
-    width: 45%;
+    border: 1px solid rgb(212, 18, 18);
+    width: 80%;
     justify-content: center;
     flex-direction: column;
     background: rgb(255, 255, 255);
     margin-top: 10px;
-    // border: 2px solid rgb(236, 135, 194);
     height: 400px;
     .name_space {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
-      // border: 1px solid black;
       height: 30%;
       background: rgb(235, 108, 103);
       h2 {
@@ -124,7 +118,6 @@
       text-align: center;
       height: 60%;
       width: 100%;
-      // border: 1px solid black;
       h3 {
         color: rgb(247, 94, 74);
         font-family: Helvetica;
@@ -143,6 +136,47 @@
         margin-right: 5%;
         cursor: pointer;
       }
+    }
+  }
+}
+
+//////////////////////////Responsiveness ///////////////////////////
+
+@media (max-width: 890px) {
+  .welcomeUser {
+    font-size: 20px;
+    height: 60px;
+  }
+  .searchBar {
+    width: 60%;
+    margin-left: 50px;
+  }
+  #search_bar {
+    height: 30px;
+  }
+  .searchIcon {
+    top: -30px;
+  }
+
+  .details {
+    // width: 150%;
+    .card {
+      width: 330px;
+    }
+  }
+}
+
+@media (max-width: 792px) {
+  .details {
+    .card {
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 1224px) {
+  .details {
+    .card {
+      width: 100%;
     }
   }
 }

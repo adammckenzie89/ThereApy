@@ -54,8 +54,6 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.state.loading);
-    console.log(this.state.data.length);
     let displayData = this.state.data.map((val, index) => {
       return (
         <div>

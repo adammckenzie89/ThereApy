@@ -8,6 +8,18 @@ import styles from "./header.module.scss";
 import logo from "./logo.png";
 
 class Header extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      menu: false
+    };
+  }
+  handleClick = () => {
+    this.setState({
+      menu: !this.state.menu
+    });
+  };
   render() {
     if (!this.props.auth.username) {
       return <Redirect to="/" push={true} />;
@@ -18,6 +30,13 @@ class Header extends Component {
         <nav>
           <div className={styles.logoContainer}>
             <img className={styles.headerLogo} src={logo} alt="logo" />
+          </div>
+          <div className={styles.burgerContainer}>
+            <img
+              onClick={this.handleClick}
+              className={styles.hamburger}
+              src="https://cdn0.iconfinder.com/data/icons/essentials-line/100/Menu-512.png"
+            />
           </div>
           <div className={styles.linksCon}>
             <Link to="/profile">
@@ -42,6 +61,19 @@ class Header extends Component {
             </h3>
           </div>
         </nav>
+        <div className={this.state.menu ? styles.menuOpen : styles.menuClosed}>
+          {/* <h1>HELLO</h1> */}
+          <Link to="/profile">
+            <h3 className={styles.links}>Profile</h3>
+          </Link>
+          <Link to="/favorites">
+            <h3 className={styles.links}>Favorites</h3>
+          </Link>
+          <Link to="search">
+            <h3 className={styles.links}>Search</h3>
+          </Link>
+          <div />
+        </div>
         <section className={styles.headerextension}>
           <div className={styles.one}>
             <img

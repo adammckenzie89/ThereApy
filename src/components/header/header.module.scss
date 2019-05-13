@@ -23,6 +23,7 @@ nav {
   display: flex;
   // background: rgb(212, 238, 255);
   // border: 1px solid red;
+  // border-bottom: 1px solid white;
   background: rgb(235, 108, 103);
   background-size: cover;
   align-items: center;
@@ -33,11 +34,11 @@ nav {
 }
 .logoContainer {
   width: 70%;
+  // border: 1px solid white;
 }
 .headerLogo {
   height: 53px;
   width: 170px;
-  // border: 1px solid white;
   justify-content: flex-start;
 }
 
@@ -59,12 +60,12 @@ nav {
 
 a {
   text-decoration: none;
+  // border: 1px solid white;
 }
 
 .headerextension {
   display: flex;
   height: 300px;
-  // background-image: linear-gradient(315deg, #ffc0a7 0%, rgb(188, 229, 241) 70%);
   background: linear-gradient(
       rgba(167, 167, 167, 0.1),
       rgba(180, 180, 180, 0.1)
@@ -129,5 +130,116 @@ p {
   font-family: Helvetica;
   font-size: 15px;
   font-weight: 400;
-  color: rgb(247, 94, 74);
+  color: rgb(235, 108, 103);
+}
+.burgerContainer {
+  display: none;
+}
+///////////////////////////// Responsiveness ///////////////////////
+
+.menuOpen {
+  background: rgb(235, 108, 103);
+  border-top: 2px solid white;
+  top: 0px;
+  width: 100vw;
+  position: absolute;
+  height: 20vh;
+  animation: openMenu 1s;
+  z-index: 0;
+  margin-top: 70px;
+  overflow: hidden;
+  display: block;
+}
+
+.menuClosed {
+  animation: closeMenu 1s;
+  width: 100vw;
+  height: 20vh;
+  position: absolute;
+  top: 0px;
+  background: rgb(42, 48, 54);
+  animation-fill-mode: forwards;
+  display: none;
+  margin-top: 70px;
+
+  h1 {
+    color: yellow;
+  }
+}
+
+@keyframes openMenu {
+  from {
+    height: 0vw;
+  }
+  to {
+    height: 20vh;
+  }
+}
+
+@keyframes closeMenu {
+  from {
+    height: 20vh;
+  }
+  to {
+    height: 0vw;
+  }
+}
+
+@media (max-width: 895px) {
+  p {
+    width: 90%;
+    height: 70px;
+  }
+
+  .linksCon {
+    display: none;
+  }
+
+  .headerextension {
+    width: 100%;
+    border: none;
+    .one {
+      display: none;
+      .feelBetter {
+        display: none;
+      }
+    }
+    .two {
+      width: 45%;
+      .geolocation {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .three {
+      width: 45%;
+      .comment {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+  .logoContainer {
+    .headerLogo {
+      height: 40px;
+      width: 125px;
+    }
+  }
+
+  .logout {
+    display: none;
+  }
+  .burgerContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    // border: 1px solid white;
+    margin-left: 160px;
+    .hamburger {
+      height: 40px;
+      width: 40px;
+      // border: 1px solid white;
+      margin-left: 50px;
+    }
+  }
 }

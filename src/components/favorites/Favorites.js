@@ -56,8 +56,6 @@ class Favorites extends Component {
     });
   };
   render() {
-    console.log(this.state.content);
-    console.log(this.state.input);
     return (
       <div className="mother">
         <Header />
@@ -77,7 +75,6 @@ class Favorites extends Component {
                             .delete(`/api/deleteFavorite/${val.favoritesID}`)
                             .then(() => {
                               axios.get("/api/addFavorites").then(response => {
-                                console.log(response);
                                 this.setState({
                                   data: response.data
                                 });
@@ -142,15 +139,16 @@ class Favorites extends Component {
                             <div>
                               {comment.time ? (
                                 <p className="paragraph">
-                                  <strong>{comment.username}</strong> <br />
-                                  <strong>
-                                    {comment.time.substr(0, 9)}{" "}
-                                    {comment.time.substr(11, 4)}{" "}
-                                    {comment.time.substr(18)}
-                                  </strong>
+                                  <strong>{comment.username}</strong>
+                                  <br />
                                   {comment.content}
+                                  <br />
+                                  {comment.time.substr(0, 9)}{" "}
+                                  {comment.time.substr(11, 4)}{" "}
+                                  {comment.time.substr(18)}
                                 </p>
                               ) : null}
+                              <br />
                               {comment.id === this.props.id ? (
                                 <button
                                   className="deleteButton"
