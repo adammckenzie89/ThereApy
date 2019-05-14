@@ -60,7 +60,7 @@ class Search extends Component {
           <div className={styles.details} key={index}>
             <div className={styles.card}>
               <div className={styles.name_space}>
-                <h2>{val.result.result.name}</h2>
+                <h2 className={styles.headerText}>{val.result.result.name}</h2>
               </div>
               <div className={styles.details_space}>
                 <h3>{val.result.result.formatted_address}</h3>

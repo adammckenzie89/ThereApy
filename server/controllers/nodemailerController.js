@@ -15,7 +15,8 @@ function sendEmail(req, res) {
     from: `${EMAIL}`,
     to: req.body.email,
     subject: "Welcome, and thanks for using TherApy!",
-    text: "We Hope you enjoyed your experience using our app!"
+    text: "We Hope you enjoyed your experience using our app!",
+    html: "<b>We Hope you enjoyed your experience using our app!</b>"
   };
 
   transporter.sendMail(mailOptions, function(error, data) {

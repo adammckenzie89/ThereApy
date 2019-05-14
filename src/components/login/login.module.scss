@@ -17,12 +17,10 @@
 }
 
 .aroundWelcome {
-  // display: flex;
   justify-content: center;
   align-content: center;
-  height: 650px;
-  width: 550px;
-  // background: url("https://images.unsplash.com/photo-1557090038-7521c1bc6c0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  height: 680px;
+  width: 580px;
   background: url("https://images.pexels.com/photos/1042577/pexels-photo-1042577.jpeg?auto=compress&cs=tinysrgb&dpr=2&");
   background-size: 100vh;
   background-repeat: no-repeat;
@@ -39,15 +37,16 @@
   background: rgb(17, 42, 70);
 }
 
-h2 {
-  color: rgb(17, 42, 70);
+.getStarted {
+  color: rgb(247, 100, 94); //get started
   font-family: Helvetica;
-  font-weight: 200;
+  font-weight: 300;
   margin: 20px;
+  font-size: 2em;
   // padding: 10px;
 }
 .signOrLog {
-  color: rgb(235, 108, 103);
+  color: white;
   font-family: helvetica;
   font-weight: 500;
   margin: 20px;

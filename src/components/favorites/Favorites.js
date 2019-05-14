@@ -67,7 +67,7 @@ class Favorites extends Component {
                 <div className="details" key={val.favoritesid}>
                   <div className="card">
                     <div className="name_space">
-                      <h2>{val.name}</h2>
+                      <h2 className="headerText">{val.name}</h2>
                       <button
                         className="delete_card"
                         onClick={e =>
@@ -139,7 +139,9 @@ class Favorites extends Component {
                             <div>
                               {comment.time ? (
                                 <p className="paragraph">
-                                  <strong>{comment.username}</strong>
+                                  <strong className="favUser">
+                                    {comment.username}
+                                  </strong>
                                   <br />
                                   {comment.content}
                                   <br />

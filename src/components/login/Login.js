@@ -19,7 +19,7 @@ class Login extends Component {
       <div className={styles.body}>
         <div className={styles.welcome}>
           <div className={styles.aroundWelcome}>
-            <h2>Hello! Lets get you started</h2>
+            <h2 className={styles.getStarted}>Hello! Lets get you started</h2>
             <br />
             <h4
               className={styles.signOrLog}

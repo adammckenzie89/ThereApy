@@ -40,14 +40,14 @@ class Header extends Component {
             />
           </div>
           <div className={styles.linksCon}>
-            <Link to="/profile">
-              <h3 className={styles.links}>Profile</h3>
+            <Link to="search">
+              <h3 className={styles.links}>Search</h3>
             </Link>
             <Link to="/favorites">
               <h3 className={styles.links}>Favorites</h3>
             </Link>
-            <Link to="search">
-              <h3 className={styles.links}>Search</h3>
+            <Link to="/profile">
+              <h3 className={styles.links}>Profile</h3>
             </Link>
           </div>
           <div>
@@ -63,7 +63,6 @@ class Header extends Component {
           </div>
         </nav>
         <div className={this.state.menu ? styles.menuOpen : styles.menuClosed}>
-          {/* <h1>HELLO</h1> */}
           <Link to="/profile">
             <h3 className={styles.links}>Profile</h3>
           </Link>
@@ -81,13 +80,13 @@ class Header extends Component {
               className={styles.feelBetter}
               src="https://img.icons8.com/ios/100/000000/dancing-party-filled.png"
             />
-            <p>
+            <p className={styles.boxParagraphs}>
               It's time for you to start feeling better. you owe it to yourself!
             </p>
           </div>
           <div className={styles.two}>
             <img className={styles.geolocation} src={geolocation} />
-            <p>
+            <p className={styles.boxParagraphs}>
               We use built in geolocation to find a therapist closest to you
             </p>
           </div>
@@ -96,7 +95,9 @@ class Header extends Component {
               className={styles.comment}
               src="https://img.icons8.com/ios/100/000000/feedback-filled.png"
             />
-            <p>Share you experience with other users</p>
+            <p className={styles.boxParagraphs}>
+              Share you experience with other users
+            </p>
           </div>
         </section>
       </div>

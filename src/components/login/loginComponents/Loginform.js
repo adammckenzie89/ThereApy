@@ -36,7 +36,7 @@ class Loginform extends Component {
     }
     return (
       <div>
-        <h1>Login</h1>
+        <h1 className={Styles.loginText}> Login</h1>
         <form className={Styles.form} onSubmit={this.handleSubmit}>
           <div className={Styles.usernamediv}>
             <img

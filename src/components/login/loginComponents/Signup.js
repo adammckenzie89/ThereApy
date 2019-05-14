@@ -78,7 +78,7 @@ class Signup extends Component {
             />
             <p>{this.props.error}</p>
           </div>
-          <button>Submit</button>
+          <button className={Styles.signupButton}> Submit</button>
         </form>
       </div>
     );

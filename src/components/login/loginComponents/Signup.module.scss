@@ -1,14 +1,8 @@
-// .form {
-//   display: flex;
-//   // border: 1px solid black;
-//   height: 300px;
-//   width: 300px;
-//   flex-direction: column;
-//   input {
-//     border: none;
-//     background-color: transparent;
-//     border-bottom: 1px solid gray;
-//   }
-// }
+.signupButton {
+  background: rgb(17, 42, 70);
+  border: none;
+  border-top: none;
+  border-bottom: none;
+}
 
 @import "./loginform.module.scss";
