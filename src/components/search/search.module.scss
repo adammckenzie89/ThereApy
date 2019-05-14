@@ -26,16 +26,17 @@
   border: 20px solid rgb(17, 42, 70);
   overflow-y: scroll;
   background-image: linear-gradient(
-      rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 0.6)
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 250, 250, 0.2)
     ),
-    url("https://images.unsplash.com/photo-1493552152660-f915ab47ae9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
-  // background: rgb(255, 255, 255);
+    // url("https://images.pexels.com/photos/1054027/pexels-photo-1054027.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+      url("https://images.pexels.com/photos/1042577/pexels-photo-1042577.jpeg?auto=compress&cs=tinysrgb&dpr=2&");
   background-attachment: fixed;
+  background-size: 100%;
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  background-position: center;
+  height: 120vh;
 }
 
 .searchBar {
@@ -91,8 +92,8 @@
   align-items: center;
   .card {
     display: flex;
-    border: 1px solid rgb(212, 18, 18);
-    width: 80%;
+    border: 1px solid rgb(194, 40, 40); //card from search results
+    width: 40%;
     justify-content: center;
     flex-direction: column;
     background: rgb(255, 255, 255);
@@ -131,13 +132,17 @@
       .heart {
         height: 30px;
         width: 30px;
-        background: transparent;
+        // background: red;
+        // color: red;
         margin-top: 2%;
         margin-right: 5%;
         cursor: pointer;
       }
     }
   }
+}
+.heart:hover {
+  fill: red;
 }
 
 //////////////////////////Responsiveness ///////////////////////////
@@ -157,26 +162,10 @@
   .searchIcon {
     top: -30px;
   }
-
-  .details {
-    // width: 150%;
-    .card {
-      width: 330px;
-    }
-  }
 }
 
-@media (max-width: 792px) {
-  .details {
-    .card {
-      width: 100%;
-    }
-  }
-}
-@media (max-width: 1224px) {
-  .details {
-    .card {
-      width: 100%;
-    }
-  }
-}
+//////// svg fill
+
+// svg {
+//   fill: red;
+// }

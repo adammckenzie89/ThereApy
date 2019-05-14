@@ -109,28 +109,33 @@ a {
 }
 
 .geolocation {
-  height: 150px;
-  width: 150px;
+  height: 70%;
+  width: 50%;
 }
 
 .comment {
-  height: 130px;
-  width: 130px;
+  height: 45%;
+  width: 30%;
 }
 
 .feelBetter {
-  height: 130px;
-  width: 130px;
+  height: 115px;
+  width: 115px;
 }
 
 p {
   display: flex;
   flex-wrap: wrap;
-  width: 200px;
+  text-align: center;
+  width: 260px;
   font-family: Helvetica;
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 450;
   color: rgb(235, 108, 103);
+  border-top: 2px solid rgb(235, 108, 103);
+
+  // margin-bottom: 5px;
+  // border: 1px solid red;
 }
 .burgerContainer {
   display: none;

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { logOut } from "../../ducks/auth";
 import styles from "./header.module.scss";
 import logo from "./logo.png";
+import geolocation from "./geolocation.png";
 
 class Header extends Component {
   constructor() {
@@ -85,10 +86,7 @@ class Header extends Component {
             </p>
           </div>
           <div className={styles.two}>
-            <img
-              className={styles.geolocation}
-              src="http://chittagongit.com/images/geo-location-icon/geo-location-icon-3.jpg"
-            />
+            <img className={styles.geolocation} src={geolocation} />
             <p>
               We use built in geolocation to find a therapist closest to you
             </p>
