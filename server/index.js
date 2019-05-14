@@ -2,8 +2,13 @@ require("dotenv").config();
 const express = require("express");
 const massive = require("massive");
 const session = require("express-session");
-
+// const __dirname = require("../build");
 const app = express();
+
+//////////////////////// Hosting ///////////////////////
+
+app.use(express.static(`${__dirname}/../build`));
+
 app.use(express.json());
 
 const { CONNECTION_STRING, SERVER_PORT, SECRET } = process.env;
@@ -39,6 +44,8 @@ app.use(
     }
   })
 );
+
+////////////////////////////// DB /////////////////////////////
 
 massive(CONNECTION_STRING)
   .then(dbInstance => {
