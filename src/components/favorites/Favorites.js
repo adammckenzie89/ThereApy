@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { getSession } from "../../ducks/auth";
 import { connect } from "react-redux";
 import Header from "../header/Header";
-import Spinner from "react-spinkit";
 import "./favorites.scss";
 import axios from "axios";
 
@@ -14,8 +13,7 @@ class Favorites extends Component {
       data: [],
       input: "",
       content: [],
-      dropDown: [],
-      loading: false
+      dropDown: []
     };
   }
   async componentDidMount() {
@@ -61,11 +59,6 @@ class Favorites extends Component {
       <div className="mother">
         <Header />
         <div className="bigContainer">
-          {this.state.loading === true && this.state.data.length === 0 ? (
-            <div className="spin">
-              <Spinner name="ball-spin-fade-loader" />
-            </div>
-          ) : null}
           <div />
           {this.state.data.map((val, index) => {
             return (
