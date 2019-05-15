@@ -36,7 +36,7 @@ class Signup extends Component {
     }
     return (
       <div>
-        <h1>Signup</h1>
+        <h1 className={Styles.signupFont}>Signup</h1>
         <form className={Styles.form} onSubmit={this.handleSubmit}>
           <div styles={Styles.usernamediv}>
             <img

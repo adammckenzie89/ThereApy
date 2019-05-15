@@ -5,4 +5,10 @@
   border-bottom: none;
 }
 
+.signupFont {
+  color: rgb(247, 100, 94); //login text
+  font-family: Helvetica;
+  font-weight: 100;
+}
+
 @import "./loginform.module.scss";
