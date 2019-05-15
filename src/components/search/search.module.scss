@@ -48,8 +48,9 @@
   width: 100%;
   height: 45px;
   padding: 0 20px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3);
   font-size: 1rem;
-  border: 1px solid #d0cfce;
+  // border: 1px solid #d0cfce;
   outline: none;
   &::placeholder {
     color: black;
@@ -91,7 +92,6 @@
   align-items: center;
   .card {
     display: flex;
-    // border: 1px solid rgb(22, 21, 21);
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
     width: 40%;
     justify-content: center;
@@ -160,5 +160,24 @@
   }
   .searchIcon {
     top: -30px;
+  }
+}
+
+@media (max-width: 375px) {
+  .details {
+    .card {
+      width: 95%;
+      .name_space {
+        .headerText {
+          margin-left: 20px;
+        }
+      }
+      .details_space {
+        h3 {
+          margin-left: 20px;
+          width: 80%;
+        }
+      }
+    }
   }
 }

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { getSession } from "../../ducks/auth";
 import { connect } from "react-redux";
 import Header from "../header/Header";
-// import Sharebutton from "../sharebutton/Sharebutton";
 import "./favorites.scss";
 import axios from "axios";
 
@@ -102,7 +101,8 @@ class Favorites extends Component {
                   <div className={`slide_${this.state.dropDown[index]}`}>
                     {console.log(this.state.dropDown[index])}
                     <form
-                      onSubmit={() => {
+                      onSubmit={e => {
+                        e.preventDefault();
                         axios
                           .post("/api/makePosts", {
                             content: this.state.input, //functionality for comments/ delete comments
