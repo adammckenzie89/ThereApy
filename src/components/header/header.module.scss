@@ -50,7 +50,7 @@ nav {
 
 .welcomeUser {
   display: flex;
-  border: 1px solid white;
+  // border: 1px solid white;
   padding-right: 200px;
 }
 
@@ -242,5 +242,16 @@ a {
       // border: 1px solid white;
       margin-left: 50px;
     }
+  }
+}
+@media (max-width: 1131px) {
+  .boxParagraphs {
+    width: 80%;
+  }
+}
+
+@media (max-width: 375px) {
+  .boxParagraphs {
+    width: 80%;
   }
 }
