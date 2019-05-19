@@ -81,7 +81,7 @@ class Header extends Component {
               src="https://img.icons8.com/ios/100/000000/dancing-party-filled.png"
             />
             <p className={styles.boxParagraphs}>
-              It's time for you to start feeling better. you owe it to yourself!
+              It's time for you to start feeling better. You owe it to yourself.
             </p>
           </div>
           <div className={styles.two}>
@@ -95,7 +95,9 @@ class Header extends Component {
               className={styles.comment}
               src="https://img.icons8.com/ios/100/000000/feedback-filled.png"
             />
-            <p className={styles.boxParagraphs}>Share your experience</p>
+            <p className={styles.boxParagraphs}>
+              Share your experience with others
+            </p>
           </div>
         </section>
       </div>
