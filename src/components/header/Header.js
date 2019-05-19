@@ -95,9 +95,7 @@ class Header extends Component {
               className={styles.comment}
               src="https://img.icons8.com/ios/100/000000/feedback-filled.png"
             />
-            <p className={styles.boxParagraphs}>
-              Share your experience with other users
-            </p>
+            <p className={styles.boxParagraphs}>Share your experience</p>
           </div>
         </section>
       </div>
