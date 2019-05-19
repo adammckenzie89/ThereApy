@@ -12,6 +12,7 @@ const signup = async (req, res, next) => {
   next();
   res.json(result);
 };
+
 const login = async (req, res) => {
   const db = req.app.get("db");
 

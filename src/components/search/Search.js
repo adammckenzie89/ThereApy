@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { getSession } from "../../ducks/auth";
 import { connect } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Header from "../header/Header";
 import styles from "./search.module.scss";
@@ -57,6 +59,7 @@ class Search extends Component {
     let displayData = this.state.data.map((val, index) => {
       return (
         <div>
+          <ToastContainer />
           <div className={styles.details} key={index}>
             <div className={styles.card}>
               <div className={styles.name_space}>
@@ -97,6 +100,12 @@ class Search extends Component {
                         this.setState({
                           response: response.data
                         });
+                        toast.success("Added to favorites", {
+                          position: toast.POSITION.BOTTOM_RIGHT
+                        });
+                      })
+                      .catch(error => {
+                        toast.error("naw dog");
                       });
                   }}
                 >
