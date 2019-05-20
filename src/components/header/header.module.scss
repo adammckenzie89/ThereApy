@@ -1,3 +1,5 @@
+$primary-color: rgb(235, 108, 103);
+
 body {
   margin: 0;
 }
@@ -21,7 +23,7 @@ body {
 }
 nav {
   display: flex;
-  background: rgb(235, 108, 103);
+  background: $primary-color;
   background-size: cover;
   align-items: center;
   justify-content: center;
@@ -58,6 +60,12 @@ a {
   text-decoration: none;
 }
 
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .headerextension {
   display: flex;
   height: 300px;
@@ -72,9 +80,7 @@ a {
   justify-content: space-evenly;
   align-items: center;
   .one {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    @include flex;
     align-items: center;
     height: 80%;
     width: 25%;
@@ -83,9 +89,7 @@ a {
     border-radius: 8px;
   }
   .two {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    @include flex;
     align-items: center;
     height: 80%;
     width: 25%;
@@ -94,9 +98,7 @@ a {
     border-radius: 8px;
   }
   .three {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    @include flex;
     align-items: center;
     height: 80%;
     width: 25%;
@@ -129,8 +131,8 @@ a {
   font-family: Helvetica;
   font-size: 18px;
   font-weight: 450;
-  color: rgb(235, 108, 103);
-  border-top: 2px solid rgb(235, 108, 103);
+  color: $primary-color;
+  border-top: 2px solid $primary-color;
 }
 .burgerContainer {
   display: none;
