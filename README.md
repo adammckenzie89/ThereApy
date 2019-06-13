@@ -2,6 +2,8 @@
 
 # ThereApy
 
+http://www.thereapy.me/#/
+
 ## Purpose
 The purpose of this project was to approach a new set of skills that we would self teach and use. I developed the project utilizing Google's Developer Platform to tap into a user's location and return place details based around certain queries. 
 
