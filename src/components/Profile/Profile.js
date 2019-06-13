@@ -22,8 +22,6 @@ class Profile extends Component {
   handleClick = e => {
     e.preventDefault();
     const { username, password, email } = this.state;
-    console.log("hey");
-    console.log(username, password, email);
     const session = this.props.username;
     this.props.editProfile(session, username, email);
     this.props.login(username, password);

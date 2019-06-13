@@ -48,12 +48,9 @@ app.use(
 
 ////////////////////////////// DB /////////////////////////////
 
-massive(CONNECTION_STRING)
-  .then(dbInstance => {
-    console.log("database hit");
-    app.set("db", dbInstance);
-  })
-  .catch(error => console.log(error));
+massive(CONNECTION_STRING).then(dbInstance => {
+  app.set("db", dbInstance);
+});
 
 /////////////// LOGIN ENDPOIONTS////////////////////////////
 

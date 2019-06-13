@@ -52,7 +52,6 @@ export function editProfile(session, username, email) {
 }
 
 export default function reducer(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case `${SIGN_UP}_FULFILLED`:
       return {
@@ -61,7 +60,6 @@ export default function reducer(state = initialState, action) {
         id: action.payload.data[0].id
       };
     case `${LOGIN}_FULFILLED`:
-      console.log(action.payload);
       return {
         ...state,
         username: action.payload.data.username,

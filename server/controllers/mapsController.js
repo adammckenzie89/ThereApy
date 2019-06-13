@@ -10,16 +10,13 @@ const userLocation = async (req, res) => {
       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=24140.2&type=doctor&keyword=counseling&keyword=therapy&keyword=mentalhealth&key=${KEY}`
     )
     .then(async response => {
-      // console.log(response.data.results[1].photos);
       let placeData = [];
       for (let i = 0; i < response.data.results.length; i++) {
-        let result = await axios
-          .get(
-            `https://maps.googleapis.com/maps/api/place/details/json?key=${KEY}&placeid=${
-              response.data.results[i].place_id
-            }`
-          )
-          .catch(err => console.log(err));
+        let result = await axios.get(
+          `https://maps.googleapis.com/maps/api/place/details/json?key=${KEY}&placeid=${
+            response.data.results[i].place_id
+          }`
+        );
         placeData.push({
           result: result.data,
           photos: response.data.results[i].photos

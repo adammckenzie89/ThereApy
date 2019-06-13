@@ -20,7 +20,6 @@ class Favorites extends Component {
     this.props.getSession();
 
     await axios.get("/api/addFavorites").then(response => {
-      console.log("FAVORITES: ", response);
       this.setState({
         data: response.data
       });
@@ -33,7 +32,6 @@ class Favorites extends Component {
       dropDown: arr
     });
     axios.get("/api/joinPosts").then(response => {
-      console.log("POSTS: ", response);
       this.setState({
         content: response.data
       });
@@ -41,7 +39,6 @@ class Favorites extends Component {
   }
   dropDown = index => {
     let { dropDown } = this.state;
-    console.log(this.state.dropDown);
     if (
       this.state.dropDown[index] === "closed" ||
       this.state.dropDown[index] === undefined
@@ -99,7 +96,6 @@ class Favorites extends Component {
                     </div>
                   </div>
                   <div className={`slide_${this.state.dropDown[index]}`}>
-                    {console.log(this.state.dropDown[index])}
                     <form
                       onSubmit={e => {
                         e.preventDefault();

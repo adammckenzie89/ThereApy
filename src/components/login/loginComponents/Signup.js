@@ -30,7 +30,6 @@ class Signup extends Component {
   }
 
   render() {
-    console.log(this.props);
     if (this.props.username) {
       return <Redirect to="/search" push={true} />;
     }

@@ -5,7 +5,6 @@ import store from "./store";
 import routes from "./routes";
 
 function App() {
-  console.log("hit");
   return (
     <Provider store={store}>
       <HashRouter>

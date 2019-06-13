@@ -25,7 +25,6 @@ class Header extends Component {
     if (!this.props.auth.username) {
       return <Redirect to="/" push={true} />;
     }
-    console.log(this.props);
     return (
       <div className={styles.outer}>
         <nav>
