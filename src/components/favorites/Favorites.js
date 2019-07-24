@@ -59,6 +59,8 @@ class Favorites extends Component {
         <Header />
         <div className="bigContainer">
           <div />
+      //mapping and displaying saved favorites
+      
           {this.state.data.map((val, index) => {
             return (
               <div className="everything">
