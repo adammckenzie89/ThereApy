@@ -18,7 +18,9 @@ class Favorites extends Component {
   }
   async componentDidMount() {
     this.props.getSession();
-
+    
+// retrieve users saved favorites 
+    
     await axios.get("/api/addFavorites").then(response => {
       this.setState({
         data: response.data
